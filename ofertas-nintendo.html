@@ -471,6 +471,7 @@
         <div class="filter-pill">
           <span>Ordenar</span>
           <select id="sortBy">
+            <option value="relevance">Relevância (Recomendado)</option>
             <option value="discount">Maior desconto</option>
             <option value="price-low">Menor preço</option>
             <option value="price-high">Maior preço</option>
@@ -627,6 +628,10 @@
       // Ordenar
       filteredGames.sort((a, b) => {
         switch(sortBy) {
+          case 'relevance':
+            // Ordenar por rating (maior primeiro), depois por desconto
+            if (a.rating !== b.rating) return b.rating - a.rating;
+            return b.discount_percent - a.discount_percent;
           case 'discount': return b.discount_percent - a.discount_percent;
           case 'price-low': return a.sale_price - b.sale_price;
           case 'price-high': return b.sale_price - a.sale_price;
