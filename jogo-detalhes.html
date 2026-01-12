@@ -389,11 +389,11 @@
           </div>
 
           <div class="best-price-card">
-            <div class="best-price-label">💰 Melhor Preço (em Reais)</div>
+            <div class="best-price-label">💰 Menor Preço Global (em Reais)</div>
             <div class="best-price-value" id="bestPrice">R$ -</div>
             <div class="best-price-savings">
               <span id="bestCountry">-</span> •
-              <span id="bestDiscount">Economia de -</span>
+              <span id="bestDiscount">Diferença do mais caro: -</span>
             </div>
           </div>
         </div>
@@ -401,17 +401,21 @@
 
       <section>
         <h2 class="section-title">
-          🌍 Comparação de Preços por Região
+          🌍 Comparação de Preços - Todos os Países
         </h2>
+        <p style="color: var(--muted); margin-bottom: 20px;">
+          Veja onde o jogo está mais barato, independente de estar em promoção ou não.
+          Preços convertidos para Reais (BRL) • Total: 27 países
+        </p>
 
         <div class="prices-table">
           <div class="table-header">
             <span>País</span>
             <span>Região</span>
-            <span>Preço Original</span>
-            <span>Preço Atual</span>
-            <span>Em Reais</span>
-            <span>Desconto</span>
+            <span>Preço Normal</span>
+            <span>Com Desconto</span>
+            <span>Em Reais (BRL)</span>
+            <span>Status</span>
           </div>
           <div id="pricesTableBody">
             <!-- Rows serão inseridas aqui -->
@@ -426,19 +430,44 @@
   </footer>
 
   <script>
-    // Mapeamento de países e moedas
+    // Mapeamento completo de TODOS os países com eShop (27 países)
     const COUNTRIES = {
+      // Americas
       US: { name: "Estados Unidos", flag: "🇺🇸", currency: "USD", rate: 5.80 },
+      CA: { name: "Canadá", flag: "🇨🇦", currency: "CAD", rate: 4.20 },
+      MX: { name: "México", flag: "🇲🇽", currency: "MXN", rate: 0.32 },
       BR: { name: "Brasil", flag: "🇧🇷", currency: "BRL", rate: 1.00 },
-      JP: { name: "Japão", flag: "🇯🇵", currency: "JPY", rate: 0.039 },
+      AR: { name: "Argentina", flag: "🇦🇷", currency: "ARS", rate: 0.0062 },
+      CL: { name: "Chile", flag: "🇨🇱", currency: "CLP", rate: 0.0062 },
+      CO: { name: "Colômbia", flag: "🇨🇴", currency: "COP", rate: 0.0014 },
+      PE: { name: "Peru", flag: "🇵🇪", currency: "PEN", rate: 1.55 },
+
+      // Europa
       GB: { name: "Reino Unido", flag: "🇬🇧", currency: "GBP", rate: 7.20 },
       DE: { name: "Alemanha", flag: "🇩🇪", currency: "EUR", rate: 6.20 },
       FR: { name: "França", flag: "🇫🇷", currency: "EUR", rate: 6.20 },
-      MX: { name: "México", flag: "🇲🇽", currency: "MXN", rate: 0.32 },
-      AU: { name: "Austrália", flag: "🇦🇺", currency: "AUD", rate: 3.60 },
-      CA: { name: "Canadá", flag: "🇨🇦", currency: "CAD", rate: 4.20 },
       ES: { name: "Espanha", flag: "🇪🇸", currency: "EUR", rate: 6.20 },
       IT: { name: "Itália", flag: "🇮🇹", currency: "EUR", rate: 6.20 },
+      NL: { name: "Holanda", flag: "🇳🇱", currency: "EUR", rate: 6.20 },
+      PT: { name: "Portugal", flag: "🇵🇹", currency: "EUR", rate: 6.20 },
+      RU: { name: "Rússia", flag: "🇷🇺", currency: "RUB", rate: 0.063 },
+      CH: { name: "Suíça", flag: "🇨🇭", currency: "CHF", rate: 6.50 },
+      AT: { name: "Áustria", flag: "🇦🇹", currency: "EUR", rate: 6.20 },
+      BE: { name: "Bélgica", flag: "🇧🇪", currency: "EUR", rate: 6.20 },
+      SE: { name: "Suécia", flag: "🇸🇪", currency: "SEK", rate: 0.54 },
+      NO: { name: "Noruega", flag: "🇳🇴", currency: "NOK", rate: 0.53 },
+      DK: { name: "Dinamarca", flag: "🇩🇰", currency: "DKK", rate: 0.83 },
+      FI: { name: "Finlândia", flag: "🇫🇮", currency: "EUR", rate: 6.20 },
+      PL: { name: "Polônia", flag: "🇵🇱", currency: "PLN", rate: 1.45 },
+      CZ: { name: "República Tcheca", flag: "🇨🇿", currency: "CZK", rate: 0.25 },
+
+      // Ásia & Oceania
+      JP: { name: "Japão", flag: "🇯🇵", currency: "JPY", rate: 0.039 },
+      AU: { name: "Austrália", flag: "🇦🇺", currency: "AUD", rate: 3.60 },
+      NZ: { name: "Nova Zelândia", flag: "🇳🇿", currency: "NZD", rate: 3.40 },
+      HK: { name: "Hong Kong", flag: "🇭🇰", currency: "HKD", rate: 0.74 },
+      KR: { name: "Coreia do Sul", flag: "🇰🇷", currency: "KRW", rate: 0.0043 },
+      ZA: { name: "África do Sul", flag: "🇿🇦", currency: "ZAR", rate: 0.31 },
     };
 
     // Obter ID do jogo da URL
@@ -464,27 +493,89 @@
       displayGameData(getDemoData());
     }
 
-    // Dados de exemplo
+    // Dados de exemplo com TODOS os países
     function getDemoData() {
       const games = {
         'super-mario-bros-wonder': {
           title: 'Super Mario Bros. Wonder',
           prices: [
-            { region: 'BR', msrp: 299.00, sale_price: 248.67, discount: 17 },
+            // Americas
             { region: 'US', msrp: 59.99, sale_price: 49.99, discount: 17 },
-            { region: 'JP', msrp: 6578, sale_price: 5590, discount: 15 },
-            { region: 'GB', msrp: 49.99, sale_price: 42.49, discount: 15 },
+            { region: 'CA', msrp: 79.99, sale_price: null, discount: 0 },
             { region: 'MX', msrp: 1199, sale_price: 995, discount: 17 },
+            { region: 'BR', msrp: 299.00, sale_price: 248.67, discount: 17 },
+            { region: 'AR', msrp: 12999, sale_price: 10799, discount: 17 },
+            { region: 'CL', msrp: 44990, sale_price: null, discount: 0 },
+            { region: 'CO', msrp: 249900, sale_price: null, discount: 0 },
+            { region: 'PE', msrp: 219, sale_price: null, discount: 0 },
+
+            // Europa
+            { region: 'GB', msrp: 49.99, sale_price: 42.49, discount: 15 },
+            { region: 'DE', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'FR', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'ES', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'IT', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'NL', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'PT', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'RU', msrp: 4999, sale_price: null, discount: 0 },
+            { region: 'CH', msrp: 69.00, sale_price: null, discount: 0 },
+            { region: 'AT', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'BE', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'SE', msrp: 649, sale_price: null, discount: 0 },
+            { region: 'NO', msrp: 629, sale_price: null, discount: 0 },
+            { region: 'DK', msrp: 449, sale_price: null, discount: 0 },
+            { region: 'FI', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'PL', msrp: 269, sale_price: null, discount: 0 },
+            { region: 'CZ', msrp: 1499, sale_price: null, discount: 0 },
+
+            // Ásia & Oceania
+            { region: 'JP', msrp: 6578, sale_price: 5590, discount: 15 },
+            { region: 'AU', msrp: 89.95, sale_price: null, discount: 0 },
+            { region: 'NZ', msrp: 99.95, sale_price: null, discount: 0 },
+            { region: 'HK', msrp: 469, sale_price: null, discount: 0 },
+            { region: 'KR', msrp: 72000, sale_price: null, discount: 0 },
+            { region: 'ZA', msrp: 999, sale_price: null, discount: 0 },
           ]
         },
         'mario-kart-8-deluxe': {
           title: 'Mario Kart 8 Deluxe',
           prices: [
-            { region: 'BR', msrp: 299.00, sale_price: 209.30, discount: 30 },
+            // Americas
             { region: 'US', msrp: 59.99, sale_price: 41.99, discount: 30 },
-            { region: 'JP', msrp: 6578, sale_price: 4604, discount: 30 },
+            { region: 'CA', msrp: 79.99, sale_price: 55.99, discount: 30 },
+            { region: 'MX', msrp: 1199, sale_price: 839, discount: 30 },
+            { region: 'BR', msrp: 299.00, sale_price: 209.30, discount: 30 },
+            { region: 'AR', msrp: 12999, sale_price: 9099, discount: 30 },
+            { region: 'CL', msrp: 44990, sale_price: 31493, discount: 30 },
+            { region: 'CO', msrp: 249900, sale_price: null, discount: 0 },
+            { region: 'PE', msrp: 219, sale_price: 153, discount: 30 },
+
+            // Europa
             { region: 'GB', msrp: 49.99, sale_price: 34.99, discount: 30 },
             { region: 'DE', msrp: 59.99, sale_price: 41.99, discount: 30 },
+            { region: 'FR', msrp: 59.99, sale_price: 41.99, discount: 30 },
+            { region: 'ES', msrp: 59.99, sale_price: 41.99, discount: 30 },
+            { region: 'IT', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'NL', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'PT', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'RU', msrp: 4999, sale_price: 3499, discount: 30 },
+            { region: 'CH', msrp: 69.00, sale_price: null, discount: 0 },
+            { region: 'AT', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'BE', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'SE', msrp: 649, sale_price: null, discount: 0 },
+            { region: 'NO', msrp: 629, sale_price: null, discount: 0 },
+            { region: 'DK', msrp: 449, sale_price: null, discount: 0 },
+            { region: 'FI', msrp: 59.99, sale_price: null, discount: 0 },
+            { region: 'PL', msrp: 269, sale_price: null, discount: 0 },
+            { region: 'CZ', msrp: 1499, sale_price: null, discount: 0 },
+
+            // Ásia & Oceania
+            { region: 'JP', msrp: 6578, sale_price: 4604, discount: 30 },
+            { region: 'AU', msrp: 89.95, sale_price: null, discount: 0 },
+            { region: 'NZ', msrp: 99.95, sale_price: null, discount: 0 },
+            { region: 'HK', msrp: 469, sale_price: null, discount: 0 },
+            { region: 'KR', msrp: 72000, sale_price: null, discount: 0 },
+            { region: 'ZA', msrp: 999, sale_price: null, discount: 0 },
           ]
         }
       };
@@ -524,6 +615,9 @@
       const tbody = document.getElementById('pricesTableBody');
       tbody.innerHTML = pricesInBRL.map((p, index) => {
         const isBest = index === 0;
+        const hasDiscount = p.discount > 0;
+        const finalPrice = p.sale_price || p.msrp;
+
         return `
           <div class="price-row ${isBest ? 'best-deal' : ''}">
             <div class="flag">${p.country.flag}</div>
@@ -531,18 +625,18 @@
               <div class="country-name">${p.country.name}</div>
               <div class="country-code">${p.region} • ${p.country.currency}</div>
             </div>
-            <div class="price-original">
+            <div class="${hasDiscount ? 'price-original' : 'price'}">
               ${p.country.currency} ${p.msrp.toFixed(2)}
             </div>
-            <div class="price ${p.sale_price ? 'price-sale' : ''}">
-              ${p.country.currency} ${(p.sale_price || p.msrp).toFixed(2)}
+            <div class="price ${hasDiscount ? 'price-sale' : ''}">
+              ${hasDiscount ? p.country.currency + ' ' + p.sale_price.toFixed(2) : '-'}
             </div>
-            <div class="price price-sale">
+            <div class="price ${hasDiscount ? 'price-sale' : ''}">
               R$ ${p.priceInBRL.toFixed(2)}
             </div>
             <div>
-              ${p.discount > 0 ? `<span class="discount-badge">-${p.discount}%</span>` : '-'}
-              ${isBest ? '<div class="badge-best" style="margin-top: 6px;">MELHOR</div>' : ''}
+              ${hasDiscount ? `<span class="discount-badge">-${p.discount}%</span>` : `<span style="color: var(--muted); font-size: 0.85rem;">Sem desconto</span>`}
+              ${isBest ? '<div class="badge-best" style="margin-top: 6px;">MAIS BARATO</div>' : ''}
             </div>
           </div>
         `;

@@ -431,8 +431,8 @@
       <div class="page-title">
         <div class="store-icon-lg">N</div>
         <div>
-          <h1>Ofertas Nintendo eShop</h1>
-          <p class="page-subtitle">Melhores promoções em todas as regiões</p>
+          <h1>Nintendo eShop Global</h1>
+          <p class="page-subtitle">Comparação de preços em 27 países • Com e sem promoção</p>
         </div>
       </div>
     </section>
@@ -459,7 +459,8 @@
         <div class="filter-pill">
           <span>Desconto</span>
           <select id="filterDiscount">
-            <option value="0">Qualquer</option>
+            <option value="0">Todos os preços</option>
+            <option value="-1">Apenas com desconto</option>
             <option value="10">10% ou mais</option>
             <option value="20">20% ou mais</option>
             <option value="30">30% ou mais</option>
@@ -538,15 +539,22 @@
       document.getElementById('gamesGrid').style.display = 'grid';
     }
 
-    // Dados de exemplo
+    // Dados de exemplo - agora com jogos COM e SEM desconto
     function getDemoGames() {
       return [
+        // Jogos com desconto
         { title: "Super Mario Bros. Wonder", discount_percent: 17, msrp: 299, sale_price: 248.67, currency: "BRL", region: "BR", game_id: "super-mario-bros-wonder" },
         { title: "Mario Kart 8 Deluxe", discount_percent: 30, msrp: 299, sale_price: 209.30, currency: "BRL", region: "BR", game_id: "mario-kart-8-deluxe" },
         { title: "Splatoon 3", discount_percent: 25, msrp: 299, sale_price: 224.25, currency: "BRL", region: "BR", game_id: "splatoon-3" },
         { title: "Pikmin 4", discount_percent: 20, msrp: 299, sale_price: 239.20, currency: "BRL", region: "BR", game_id: "pikmin-4" },
         { title: "Metroid Prime Remastered", discount_percent: 15, msrp: 199, sale_price: 169.15, currency: "BRL", region: "BR", game_id: "metroid-prime-remastered" },
         { title: "Zelda: Link's Awakening", discount_percent: 25, msrp: 299, sale_price: 224.25, currency: "BRL", region: "BR", game_id: "zelda-links-awakening" },
+
+        // Jogos SEM desconto (preço normal)
+        { title: "The Legend of Zelda: Tears of the Kingdom", discount_percent: 0, msrp: 349, sale_price: null, currency: "BRL", region: "BR", game_id: "zelda-tears-of-the-kingdom" },
+        { title: "Animal Crossing: New Horizons", discount_percent: 0, msrp: 299, sale_price: null, currency: "BRL", region: "BR", game_id: "animal-crossing" },
+        { title: "Pokémon Scarlet", discount_percent: 0, msrp: 299, sale_price: null, currency: "BRL", region: "BR", game_id: "pokemon-scarlet" },
+        { title: "Super Smash Bros. Ultimate", discount_percent: 0, msrp: 299, sale_price: null, currency: "BRL", region: "BR", game_id: "smash-bros" },
       ];
     }
 
@@ -574,22 +582,27 @@
         return;
       }
 
-      grid.innerHTML = filteredGames.map(game => `
-        <a href="jogo-detalhes.html?id=${game.game_id}" class="game-card">
-          <div class="game-cover">
-            <div class="discount-badge">-${game.discount_percent}%</div>
-          </div>
-          <div class="game-info">
-            <div class="game-title">${game.title}</div>
-            <div class="game-meta">Nintendo Switch • ${game.region}</div>
-            <div class="game-prices">
-              <span class="price-current">R$ ${game.sale_price.toFixed(2)}</span>
-              <span class="price-original">R$ ${game.msrp.toFixed(2)}</span>
+      grid.innerHTML = filteredGames.map(game => {
+        const hasDiscount = game.discount_percent > 0;
+        const finalPrice = game.sale_price || game.msrp;
+
+        return `
+          <a href="jogo-detalhes.html?id=${game.game_id}" class="game-card">
+            <div class="game-cover">
+              ${hasDiscount ? `<div class="discount-badge">-${game.discount_percent}%</div>` : ''}
             </div>
-            <span class="regions-count">Ver comparação de preços →</span>
-          </div>
-        </a>
-      `).join('');
+            <div class="game-info">
+              <div class="game-title">${game.title}</div>
+              <div class="game-meta">Nintendo Switch • ${game.region}</div>
+              <div class="game-prices">
+                <span class="price-current">R$ ${finalPrice.toFixed(2)}</span>
+                ${hasDiscount ? `<span class="price-original">R$ ${game.msrp.toFixed(2)}</span>` : ''}
+              </div>
+              <span class="regions-count">Ver comparação em 27 países →</span>
+            </div>
+          </a>
+        `;
+      }).join('');
     }
 
     // Filtros
@@ -601,7 +614,13 @@
       // Filtrar
       filteredGames = allGames.filter(game => {
         if (region !== 'all' && game.region !== region) return false;
-        if (game.discount_percent < minDiscount) return false;
+
+        // -1 = apenas com desconto
+        if (minDiscount === -1 && game.discount_percent === 0) return false;
+
+        // Outros filtros de desconto mínimo
+        if (minDiscount > 0 && game.discount_percent < minDiscount) return false;
+
         return true;
       });
 
