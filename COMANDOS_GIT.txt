@@ -1,0 +1,105 @@
+# 🚀 COMANDOS PARA SUBIR PARA O GITHUB
+
+## ⚙️ PASSO 1: CONFIGURAR GIT (FAÇA UMA VEZ)
+# Execute estes comandos substituindo pelos seus dados:
+
+git config --global user.name "Seu Nome Completo"
+git config --global user.email "seu.email@gmail.com"
+
+# Exemplo:
+# git config --global user.name "João Silva"
+# git config --global user.email "joao.silva@gmail.com"
+
+
+## 📝 PASSO 2: FAZER O COMMIT INICIAL
+# Já está tudo pronto! Só falta o commit:
+
+cd "c:\Users\Adrie\.vscode\Site(Projeto)"
+
+git commit -m "feat: Initial commit - Eshop Pulse v1.0
+
+- ✨ Scraper Nintendo eShop multi-região (27 países)
+- 🔧 Pipeline de coleta, normalização e armazenamento
+- 🌐 API REST com endpoints para ofertas e preços
+- 🎨 Frontend com design moderno e responsivo
+- 📚 Documentação completa
+- 🤖 Scheduler para atualizações automáticas"
+
+
+## 🌐 PASSO 3: CRIAR REPOSITÓRIO NO GITHUB
+# Acesse: https://github.com/new
+
+1. Nome: eshop-pulse
+2. Descrição: 🎮 Comparador global de preços de jogos - Nintendo, PlayStation, Xbox, Steam
+3. Público
+4. NÃO marque "Add README" ou ".gitignore"
+5. Clique "Create repository"
+
+
+## 🔗 PASSO 4: CONECTAR E ENVIAR
+# Substitua SEU-USUARIO pelo seu usuário do GitHub:
+
+git remote add origin https://github.com/SEU-USUARIO/eshop-pulse.git
+git branch -M main
+git push -u origin main
+
+
+## ✅ PRONTO!
+# Seu projeto estará em: https://github.com/SEU-USUARIO/eshop-pulse
+
+
+## 🔄 COMANDOS PARA ATUALIZAÇÕES FUTURAS
+
+# Ver o que mudou:
+git status
+
+# Adicionar mudanças:
+git add .
+
+# Fazer commit:
+git commit -m "feat: Adicionar nova funcionalidade"
+
+# Enviar para GitHub:
+git push
+
+
+## 📱 SE PEDIR SENHA
+# Use um Personal Access Token, não sua senha!
+# Criar em: https://github.com/settings/tokens
+# Marque: repo, workflow
+# Copie o token e use como senha
+
+
+## 🆘 COMANDOS ÚTEIS
+
+# Ver histórico:
+git log --oneline
+
+# Ver remote:
+git remote -v
+
+# Desfazer último commit (mantém arquivos):
+git reset --soft HEAD~1
+
+# Ver diferenças:
+git diff
+
+
+## 🎯 ORDEM RESUMIDA (COPIE E COLE)
+
+# 1. Configure (UMA VEZ):
+git config --global user.name "Seu Nome"
+git config --global user.email "seu.email@gmail.com"
+
+# 2. Commit:
+cd "c:\Users\Adrie\.vscode\Site(Projeto)"
+git commit -m "feat: Initial commit - Eshop Pulse v1.0"
+
+# 3. Crie repo no GitHub.com
+
+# 4. Conecte e envie:
+git remote add origin https://github.com/SEU-USUARIO/eshop-pulse.git
+git branch -M main
+git push -u origin main
+
+# 5. SUCESSO! 🎉

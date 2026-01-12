@@ -68,3 +68,5 @@ htmlcov/
 
 # Output files
 *.output
+
+.vercel
