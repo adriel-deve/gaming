@@ -1,0 +1,16 @@
+{
+  "regions": {
+    "priority": ["US", "BR", "GB", "JP", "DE", "FR", "MX", "AU"],
+    "all": ["US", "CA", "MX", "BR", "AR", "CL", "CO", "PE", "GB", "DE", "FR", "ES", "IT", "NL", "PT", "RU", "CH", "AT", "BE", "SE", "NO", "DK", "FI", "PL", "CZ", "JP", "AU", "NZ", "HK", "KR", "ZA"]
+  },
+  "scraping": {
+    "limit_per_region": 100,
+    "rate_limit_delay": 0.5,
+    "use_all_regions": false
+  },
+  "filters": {
+    "only_on_sale": false,
+    "min_discount_percent": 0,
+    "exclude_demos": false
+  }
+}

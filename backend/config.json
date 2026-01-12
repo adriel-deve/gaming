@@ -1,0 +1,6 @@
+{
+  "refresh_minutes": 60,
+  "default_currency": "BRL",
+  "regions": ["BR", "US", "EU"],
+  "stores": ["nintendo", "playstation", "xbox", "steam"]
+}

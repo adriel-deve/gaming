@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eshop Pulse | Comparador global de jogos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-soft: #11131a;
+      --panel: rgba(255, 255, 255, 0.04);
+      --panel-strong: rgba(255, 255, 255, 0.08);
+      --text: #f7f7f7;
+      --muted: #a7acb7;
+      --accent: #ff3b3b;
+      --accent-strong: #ff5a5a;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      --radius-lg: 26px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Sora", system-ui, sans-serif;
+      background: radial-gradient(circle at top left, rgba(255, 59, 59, 0.22), transparent 55%),
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.08), transparent 45%),
+        #0a0a0f;
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .bg-pattern {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.04), transparent 30%),
+        repeating-linear-gradient(160deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 140px);
+      z-index: -1;
+      opacity: 0.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1160px, 92vw);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(10, 10, 15, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(140deg, var(--accent), #ffffff);
+      display: grid;
+      place-items: center;
+      color: #111;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .brand-tag {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--text);
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after {
+      width: 100%;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, border 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #111;
+      border: none;
+      box-shadow: 0 16px 30px rgba(255, 59, 59, 0.35);
+    }
+
+    .btn.ghost {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 34px;
+      padding: 72px 0 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      line-height: 1;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+    }
+
+    .search-block {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .search-block.compact {
+      padding: 14px;
+      border-radius: var(--radius-md);
+      box-shadow: none;
+    }
+
+    .search-label {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .search-main {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      background: rgba(10, 10, 15, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      padding: 8px 12px;
+    }
+
+    .search-main input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 1rem;
+      padding: 8px 10px;
+      outline: none;
+    }
+
+    .search-main input::placeholder {
+      color: var(--muted);
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .filter-pill span {
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .filter-pill select {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .hero-panel {
+      background: rgba(10, 10, 15, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      display: grid;
+      gap: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .panel-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .pulse-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(255, 59, 59, 0.8);
+      animation: pulse 1.6s infinite ease-in-out;
+    }
+
+    .panel-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .panel-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .panel-card span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .price-tag {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .panel-strip {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .section {
+      padding: 48px 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      gap: 12px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .info-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: grid;
+      gap: 10px;
+      transition: transform 0.2s ease, border 0.2s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 59, 59, 0.5);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 59, 59, 0.16);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .callout {
+      background: linear-gradient(130deg, rgba(255, 59, 59, 0.2), rgba(255, 255, 255, 0.05));
+      border: 1px solid rgba(255, 59, 59, 0.35);
+      padding: 26px;
+      border-radius: var(--radius-lg);
+      display: grid;
+      gap: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      padding: 36px 0 60px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: reveal 0.8s ease forwards;
+    }
+
+    .reveal.delay-1 { animation-delay: 0.2s; }
+    .reveal.delay-2 { animation-delay: 0.35s; }
+    .reveal.delay-3 { animation-delay: 0.5s; }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.4); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+
+    @media (max-width: 980px) {
+      .topbar-inner { flex-wrap: wrap; }
+      .nav { width: 100%; overflow-x: auto; padding-bottom: 10px; }
+      .hero { padding-top: 48px; }
+    }
+
+    @media (max-width: 700px) {
+      .search-main { flex-direction: column; align-items: stretch; border-radius: var(--radius-md); }
+      .search-main button { width: 100%; }
+      .top-actions { width: 100%; justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-pattern"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">EP</div>
+        <div>
+          <div class="brand-name">Eshop Pulse</div>
+          <div class="brand-tag">Comparador global de jogos</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#jogos" class="active">Jogos</a>
+        <a href="#switch-online">Nintendo Switch Online</a>
+        <a href="#midias-fisicas">Midias fisicas</a>
+        <a href="#wishlist">Wishlist</a>
+        <a href="#destaques">Destaques</a>
+      </nav>
+      <div class="top-actions">
+        <button class="btn ghost">Conectar conta</button>
+        <button class="btn primary">Criar conta</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">Bem-vindo</p>
+        <h1>O objetivo e revelar o menor preco de jogos e assinaturas nas eShops do mundo.</h1>
+        <p class="lead">Aqui voce compara valores por regiao, acompanha promocoes em tempo real, decide entre midia digital ou fisica e monta uma wishlist com alertas de queda.</p>
+        <div class="search-block">
+          <span class="search-label">Pesquise seus jogos</span>
+          <div class="search-main">
+            <input type="text" placeholder="Ex: Metroid Prime, Zelda, Mario Kart" />
+            <button class="btn primary">Buscar</button>
+          </div>
+          <div class="filter-row">
+            <label class="filter-pill">
+              <span>Plataforma</span>
+              <select>
+                <option>Todas</option>
+              </select>
+            </label>
+            <label class="filter-pill">
+              <span>Regiao</span>
+              <select>
+                <option>Global</option>
+              </select>
+            </label>
+            <label class="filter-pill">
+              <span>Midia</span>
+              <select>
+                <option>Digital + Fisica</option>
+              </select>
+            </label>
+            <label class="filter-pill">
+              <span>Preco</span>
+              <select>
+                <option>Qualquer</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button class="btn primary">Explorar ofertas</button>
+          <button class="btn ghost">Criar alerta</button>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-label">Radar em tempo real</div>
+            <h2>Precos monitorados</h2>
+          </div>
+          <div class="pulse-dot"></div>
+        </div>
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div>
+              <strong>Metroid Prime</strong>
+              <span>12 lojas ativas</span>
+            </div>
+            <div class="price-tag">US$ 39</div>
+          </div>
+          <div class="panel-card">
+            <div>
+              <strong>Switch Online</strong>
+              <span>Menor preco no Mexico</span>
+            </div>
+            <div class="price-tag">-18%</div>
+          </div>
+          <div class="panel-card">
+            <div>
+              <strong>Midia fisica</strong>
+              <span>Frete internacional</span>
+            </div>
+            <div class="price-tag">Ativo</div>
+          </div>
+        </div>
+        <div class="panel-strip">
+          <span>174 eShops conectadas</span>
+          <span>52 moedas convertidas</span>
+          <span>Historico de 24 meses</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="destaques" class="section reveal">
+      <div class="section-title">
+        <div>
+          <div class="section-eyebrow">Destaques</div>
+          <h2>Promocoes globais do dia</h2>
+        </div>
+        <button class="btn ghost">Ver tudo</button>
+      </div>
+      <div class="search-block compact">
+        <span class="search-label">Pesquise seus jogos</span>
+        <div class="search-main">
+          <input type="text" placeholder="Busque por titulo ou DLC" />
+          <button class="btn primary">Buscar</button>
+        </div>
+        <div class="filter-row">
+          <label class="filter-pill">
+            <span>Plataforma</span>
+            <select>
+              <option>Todas</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Regiao</span>
+            <select>
+              <option>Global</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Midia</span>
+            <select>
+              <option>Digital + Fisica</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Preco</span>
+            <select>
+              <option>Qualquer</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="card-grid">
+        <article class="info-card">
+          <span class="tag">-22%</span>
+          <strong>Neon Drift Deluxe</strong>
+          <p class="lead">Menor preco no Canada.</p>
+          <div class="card-meta">
+            <span>eShop CA</span>
+            <span class="price-tag">CA$ 19</span>
+          </div>
+        </article>
+        <article class="info-card">
+          <span class="tag">-15%</span>
+          <strong>Skyline Arena</strong>
+          <p class="lead">Pacote completo + DLC.</p>
+          <div class="card-meta">
+            <span>eShop JP</span>
+            <span class="price-tag">JPY 2.100</span>
+          </div>
+        </article>
+        <article class="info-card">
+          <span class="tag">-30%</span>
+          <strong>Orbital Quest</strong>
+          <p class="lead">Oferta relampago 6h.</p>
+          <div class="card-meta">
+            <span>eShop MX</span>
+            <span class="price-tag">MX$ 249</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="jogos" class="section reveal delay-1">
+      <div class="section-title">
+        <div>
+          <div class="section-eyebrow">Jogos</div>
+          <h2>Catalogo global para comparar</h2>
+        </div>
+        <button class="btn ghost">Abrir catalogo</button>
+      </div>
+      <div class="search-block compact">
+        <span class="search-label">Pesquise seus jogos</span>
+        <div class="search-main">
+          <input type="text" placeholder="Ex: indies, AAA, colecoes" />
+          <button class="btn primary">Buscar</button>
+        </div>
+        <div class="filter-row">
+          <label class="filter-pill">
+            <span>Plataforma</span>
+            <select>
+              <option>Todas</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Regiao</span>
+            <select>
+              <option>Global</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Midia</span>
+            <select>
+              <option>Digital + Fisica</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Preco</span>
+            <select>
+              <option>Qualquer</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="card-grid">
+        <article class="info-card">
+          <span class="tag">Top 10</span>
+          <strong>Galaxy Runner</strong>
+          <p class="lead">Preco estavel em 9 regioes.</p>
+          <div class="card-meta">
+            <span>Menor: EUA</span>
+            <span class="price-tag">US$ 29</span>
+          </div>
+        </article>
+        <article class="info-card">
+          <span class="tag">Novo</span>
+          <strong>Crimson Echoes</strong>
+          <p class="lead">Release mundial em 3 horas.</p>
+          <div class="card-meta">
+            <span>Pre-venda</span>
+            <span class="price-tag">US$ 59</span>
+          </div>
+        </article>
+        <article class="info-card">
+          <span class="tag">Popular</span>
+          <strong>Island Tactics</strong>
+          <p class="lead">Queda forte na Europa.</p>
+          <div class="card-meta">
+            <span>eShop EU</span>
+            <span class="price-tag">EUR 24</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="switch-online" class="section reveal delay-2">
+      <div class="section-title">
+        <div>
+          <div class="section-eyebrow">Nintendo Switch Online</div>
+          <h2>Planos, expansoes e regioes</h2>
+        </div>
+        <button class="btn ghost">Comparar planos</button>
+      </div>
+      <div class="search-block compact">
+        <span class="search-label">Pesquise seus jogos</span>
+        <div class="search-main">
+          <input type="text" placeholder="Buscar plano, expansao ou DLC" />
+          <button class="btn primary">Buscar</button>
+        </div>
+        <div class="filter-row">
+          <label class="filter-pill">
+            <span>Plataforma</span>
+            <select>
+              <option>Nintendo Switch</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Regiao</span>
+            <select>
+              <option>Global</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Midia</span>
+            <select>
+              <option>Digital</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Preco</span>
+            <select>
+              <option>Qualquer</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="card-grid">
+        <article class="info-card">
+          <span class="tag">Individual</span>
+          <strong>12 meses</strong>
+          <p class="lead">Menor preco na America Latina.</p>
+          <div class="card-meta">
+            <span>eShop CL</span>
+            <span class="price-tag">CLP 15.990</span>
+          </div>
+        </article>
+        <article class="info-card">
+          <span class="tag">Familia</span>
+          <strong>12 meses + Expansao</strong>
+          <p class="lead">Pack completo + retro.</p>
+          <div class="card-meta">
+            <span>eShop UK</span>
+            <span class="price-tag">GBP 59</span>
+          </div>
+        </article>
+        <article class="info-card">
+          <span class="tag">Expansao</span>
+          <strong>Pacote retro</strong>
+          <p class="lead">Mais barato em bundle.</p>
+          <div class="card-meta">
+            <span>eShop US</span>
+            <span class="price-tag">US$ 49</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="midias-fisicas" class="section reveal delay-3">
+      <div class="section-title">
+        <div>
+          <div class="section-eyebrow">Midias fisicas</div>
+          <h2>Lojas, fretes e edicoes especiais</h2>
+        </div>
+        <button class="btn ghost">Ver lojas</button>
+      </div>
+      <div class="search-block compact">
+        <span class="search-label">Pesquise seus jogos</span>
+        <div class="search-main">
+          <input type="text" placeholder="Buscar edicao fisica" />
+          <button class="btn primary">Buscar</button>
+        </div>
+        <div class="filter-row">
+          <label class="filter-pill">
+            <span>Plataforma</span>
+            <select>
+              <option>Todas</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Regiao</span>
+            <select>
+              <option>Global</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Midia</span>
+            <select>
+              <option>Fisica</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Preco</span>
+            <select>
+              <option>Qualquer</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="card-grid">
+        <article class="info-card">
+          <span class="tag">Edicao de colecionador</span>
+          <strong>Starfall Saga</strong>
+          <p class="lead">Frete internacional disponivel.</p>
+          <div class="card-meta">
+            <span>Loja EU</span>
+            <span class="price-tag">EUR 84</span>
+          </div>
+        </article>
+        <article class="info-card">
+          <span class="tag">Pre-venda</span>
+          <strong>Crimson Echoes</strong>
+          <p class="lead">Brinde exclusivo de capa.</p>
+          <div class="card-meta">
+            <span>Loja JP</span>
+            <span class="price-tag">JPY 8.400</span>
+          </div>
+        </article>
+        <article class="info-card">
+          <span class="tag">Estoque baixo</span>
+          <strong>Night Harbor</strong>
+          <p class="lead">Disponivel em 2 lojas.</p>
+          <div class="card-meta">
+            <span>Loja BR</span>
+            <span class="price-tag">R$ 299</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="wishlist" class="section reveal">
+      <div class="section-title">
+        <div>
+          <div class="section-eyebrow">Wishlist</div>
+          <h2>Alertas de preco personalizados</h2>
+        </div>
+        <button class="btn ghost">Criar wishlist</button>
+      </div>
+      <div class="search-block compact">
+        <span class="search-label">Pesquise seus jogos</span>
+        <div class="search-main">
+          <input type="text" placeholder="Adicionar jogo ou DLC" />
+          <button class="btn primary">Buscar</button>
+        </div>
+        <div class="filter-row">
+          <label class="filter-pill">
+            <span>Plataforma</span>
+            <select>
+              <option>Todas</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Regiao</span>
+            <select>
+              <option>Global</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Midia</span>
+            <select>
+              <option>Digital + Fisica</option>
+            </select>
+          </label>
+          <label class="filter-pill">
+            <span>Preco</span>
+            <select>
+              <option>Qualquer</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="card-grid">
+        <article class="info-card">
+          <span class="tag">Alerta</span>
+          <strong>Ocean Depths</strong>
+          <p class="lead">Avisar quando cair 20%.</p>
+          <div class="card-meta">
+            <span>Meta</span>
+            <span class="price-tag">US$ 19</span>
+          </div>
+        </article>
+        <article class="info-card">
+          <span class="tag">Wishlist</span>
+          <strong>Arcadia Drift</strong>
+          <p class="lead">Comparar edicao digital vs fisica.</p>
+          <div class="card-meta">
+            <span>Menor hoje</span>
+            <span class="price-tag">EUR 21</span>
+          </div>
+        </article>
+        <article class="info-card">
+          <span class="tag">Em observacao</span>
+          <strong>Nova Realm</strong>
+          <p class="lead">Esperar promocao global.</p>
+          <div class="card-meta">
+            <span>Meta</span>
+            <span class="price-tag">US$ 34</span>
+          </div>
+        </article>
+      </div>
+      <div class="callout">
+        <h2>Ative alertas inteligentes</h2>
+        <p class="lead">Defina um preco alvo e seja avisado quando a menor faixa global for atingida.</p>
+        <div class="hero-actions">
+          <button class="btn primary">Ativar alertas</button>
+          <button class="btn ghost">Agendar relatorio</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div>Eshop Pulse. Layout inicial com tema escuro, foco em jogos e comparacao global de precos.</div>
+  </footer>
+
+  <script>
+    const navLinks = document.querySelectorAll(".nav a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.forEach((item) => item.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
