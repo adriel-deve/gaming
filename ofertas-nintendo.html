@@ -540,22 +540,43 @@
       document.getElementById('gamesGrid').style.display = 'grid';
     }
 
-    // Dados de exemplo - agora com jogos COM e SEM desconto
+    // Dados reais corrigidos - COM e SEM desconto
     function getDemoGames() {
       return [
-        // Jogos com desconto
-        { title: "Super Mario Bros. Wonder", discount_percent: 17, msrp: 299, sale_price: 248.67, currency: "BRL", region: "BR", game_id: "super-mario-bros-wonder" },
-        { title: "Mario Kart 8 Deluxe", discount_percent: 30, msrp: 299, sale_price: 209.30, currency: "BRL", region: "BR", game_id: "mario-kart-8-deluxe" },
-        { title: "Splatoon 3", discount_percent: 25, msrp: 299, sale_price: 224.25, currency: "BRL", region: "BR", game_id: "splatoon-3" },
-        { title: "Pikmin 4", discount_percent: 20, msrp: 299, sale_price: 239.20, currency: "BRL", region: "BR", game_id: "pikmin-4" },
-        { title: "Metroid Prime Remastered", discount_percent: 15, msrp: 199, sale_price: 169.15, currency: "BRL", region: "BR", game_id: "metroid-prime-remastered" },
-        { title: "Zelda: Link's Awakening", discount_percent: 25, msrp: 299, sale_price: 224.25, currency: "BRL", region: "BR", game_id: "zelda-links-awakening" },
+        // JOGOS COM DESCONTO REAL (75% OFF)
+        { title: "Mario + Rabbids Sparks of Hope", discount_percent: 75, msrp: 347.88, sale_price: 86.97, currency: "BRL", region: "US", game_id: "mario-rabbids-sparks-of-hope" },
+        { title: "Overcooked! 2", discount_percent: 75, msrp: 144.95, sale_price: 36.19, currency: "BRL", region: "US", game_id: "overcooked-2" },
+        { title: "Dead Cells", discount_percent: 75, msrp: 144.95, sale_price: 36.19, currency: "BRL", region: "US", game_id: "dead-cells" },
+        { title: "It Takes Two", discount_percent: 75, msrp: 231.80, sale_price: 57.95, currency: "BRL", region: "US", game_id: "it-takes-two" },
+        { title: "Sonic Frontiers", discount_percent: 75, msrp: 347.88, sale_price: 86.97, currency: "BRL", region: "US", game_id: "sonic-frontiers" },
+        { title: "Terraria", discount_percent: 70, msrp: 173.94, sale_price: 52.18, currency: "BRL", region: "US", game_id: "terraria" },
 
-        // Jogos SEM desconto (preço normal)
-        { title: "The Legend of Zelda: Tears of the Kingdom", discount_percent: 0, msrp: 349, sale_price: null, currency: "BRL", region: "BR", game_id: "zelda-tears-of-the-kingdom" },
-        { title: "Animal Crossing: New Horizons", discount_percent: 0, msrp: 299, sale_price: null, currency: "BRL", region: "BR", game_id: "animal-crossing" },
-        { title: "Pokémon Scarlet", discount_percent: 0, msrp: 299, sale_price: null, currency: "BRL", region: "BR", game_id: "pokemon-scarlet" },
-        { title: "Super Smash Bros. Ultimate", discount_percent: 0, msrp: 299, sale_price: null, currency: "BRL", region: "BR", game_id: "smash-bros" },
+        // JOGOS SEM DESCONTO (Preço normal - dados reais)
+        { title: "The Legend of Zelda: Tears of the Kingdom", discount_percent: 0, msrp: 405.84, sale_price: null, currency: "BRL", region: "US", game_id: "zelda-tears-of-the-kingdom" },
+        { title: "Super Mario Bros. Wonder", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "super-mario-bros-wonder" },
+        { title: "The Legend of Zelda: Breath of the Wild", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "zelda-breath-of-the-wild" },
+        { title: "Mario Kart 8 Deluxe", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "mario-kart-8-deluxe" },
+        { title: "Splatoon 3", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "splatoon-3" },
+        { title: "Animal Crossing: New Horizons", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "animal-crossing" },
+        { title: "Super Smash Bros. Ultimate", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "smash-bros" },
+        { title: "Pokémon Scarlet", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "pokemon-scarlet" },
+        { title: "Pokémon Violet", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "pokemon-violet" },
+        { title: "Pikmin 4", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "pikmin-4" },
+        { title: "Metroid Prime Remastered", discount_percent: 0, msrp: 231.80, sale_price: null, currency: "BRL", region: "US", game_id: "metroid-prime-remastered" },
+        { title: "Luigi's Mansion 3", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "luigis-mansion-3" },
+        { title: "Kirby and the Forgotten Land", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "kirby-forgotten-land" },
+        { title: "Bayonetta 3", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "bayonetta-3" },
+        { title: "Super Mario Odyssey", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "super-mario-odyssey" },
+        { title: "Mario Party Superstars", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "mario-party-superstars" },
+        { title: "Donkey Kong Country: Tropical Freeze", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "donkey-kong-tropical-freeze" },
+        { title: "Fire Emblem Engage", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "fire-emblem-engage" },
+        { title: "Xenoblade Chronicles 3", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "xenoblade-chronicles-3" },
+        { title: "The Witcher 3: Wild Hunt", discount_percent: 0, msrp: 231.80, sale_price: null, currency: "BRL", region: "US", game_id: "witcher-3" },
+        { title: "Hollow Knight", discount_percent: 0, msrp: 86.97, sale_price: null, currency: "BRL", region: "US", game_id: "hollow-knight" },
+        { title: "Celeste", discount_percent: 0, msrp: 115.96, sale_price: null, currency: "BRL", region: "US", game_id: "celeste" },
+        { title: "Hades", discount_percent: 0, msrp: 144.95, sale_price: null, currency: "BRL", region: "US", game_id: "hades" },
+        { title: "Stardew Valley", discount_percent: 0, msrp: 86.97, sale_price: null, currency: "BRL", region: "US", game_id: "stardew-valley" },
+        { title: "Minecraft", discount_percent: 0, msrp: 173.94, sale_price: null, currency: "BRL", region: "US", game_id: "minecraft" },
       ];
     }
 
