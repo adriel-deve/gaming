@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nintendo Switch - Todos os Jogos | Eshop Pulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-soft: #11131a;
+      --panel: rgba(255, 255, 255, 0.04);
+      --panel-strong: rgba(255, 255, 255, 0.08);
+      --text: #f7f7f7;
+      --muted: #a7acb7;
+      --accent: #ff3b3b;
+      --accent-strong: #ff5a5a;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      --radius-lg: 26px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Sora", system-ui, sans-serif;
+      background: radial-gradient(circle at top left, rgba(255, 59, 59, 0.22), transparent 55%),
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.08), transparent 45%),
+        #0a0a0f;
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1160px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(10, 10, 15, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(140deg, var(--accent), #ffffff);
+      display: grid;
+      place-items: center;
+      color: #111;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .brand-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .brand-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 6px;
+      transition: color 0.2s ease;
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .nav a.active {
+      color: var(--text);
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .nav a.active::after {
+      width: 100%;
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .page-header p {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    /* Filters */
+    .filters {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .filter-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 0.9rem;
+    }
+
+    .filter-pill select, .filter-pill input {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Games Grid */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .game-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .game-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 24px rgba(255, 59, 59, 0.2);
+    }
+
+    .game-cover {
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .game-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .game-region {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .game-prices {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .price-old {
+      font-size: 0.9rem;
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    .badge {
+      background: var(--accent);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .badge-success {
+      background: #10b981;
+    }
+
+    /* Loading */
+    #loading {
+      text-align: center;
+      padding: 60px 20px;
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+
+      .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">EP</div>
+        <div>
+          <div class="brand-name">Eshop Pulse</div>
+          <div class="brand-tag">Comparador global de jogos</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="nintendo.html" class="active">Nintendo</a>
+        <a href="playstation.html">PlayStation</a>
+        <a href="xbox.html">Xbox</a>
+        <a href="pc.html">PC</a>
+        <a href="index.html#midias-fisicas">Mídias Físicas</a>
+        <a href="index.html#destaques">Destaques</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>NINTENDO SWITCH</h1>
+      <p>Todos os jogos com comparação de preços em 27 países</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+      <div class="filter-row">
+        <label class="filter-pill">
+          <span>🔍</span>
+          <input type="text" id="searchInput" placeholder="Buscar jogo..." style="width: 200px;" />
+        </label>
+        <label class="filter-pill">
+          <span>Mostrar:</span>
+          <select id="filterType">
+            <option value="all">Todos os jogos</option>
+            <option value="sale">Apenas promoções</option>
+            <option value="no-sale">Sem desconto</option>
+          </select>
+        </label>
+        <label class="filter-pill">
+          <span>Região:</span>
+          <select id="filterRegion">
+            <option value="all">Todas</option>
+            <option value="US">Estados Unidos</option>
+            <option value="BR">Brasil</option>
+            <option value="EU">Europa</option>
+            <option value="JP">Japão</option>
+          </select>
+        </label>
+        <label class="filter-pill">
+          <span>Ordenar:</span>
+          <select id="sortBy">
+            <option value="relevance">Relevância</option>
+            <option value="discount">Maior desconto</option>
+            <option value="price-low">Menor preço</option>
+            <option value="price-high">Maior preço</option>
+            <option value="title">Título (A-Z)</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total de Jogos</div>
+        <div class="stat-value" id="totalGames">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Em Promoção</div>
+        <div class="stat-value" id="totalSales">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Desconto Médio</div>
+        <div class="stat-value" id="avgDiscount">0%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Maior Desconto</div>
+        <div class="stat-value" id="maxDiscount">0%</div>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading">Carregando jogos...</div>
+
+    <!-- Games Grid -->
+    <div class="games-grid" id="gamesGrid" style="display: none;"></div>
+  </div>
+
+  <script>
+    let allGames = [];
+    let filteredGames = [];
+
+    // Carregar jogos
+    async function loadGames() {
+      try {
+        // Tentar carregar da API
+        const response = await fetch('/api/nintendo/games');
+        const data = await response.json();
+        allGames = data || [];
+
+        // Se não houver dados da API, usar dados locais
+        if (allGames.length === 0) {
+          allGames = getLocalGames();
+        }
+      } catch (error) {
+        console.log('API não disponível, usando dados locais');
+        allGames = getLocalGames();
+      }
+
+      filteredGames = [...allGames];
+      updateStats();
+      renderGames();
+
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('gamesGrid').style.display = 'grid';
+    }
+
+    // Dados locais (backup)
+    function getLocalGames() {
+      // Aqui virão os dados do backend (será atualizado automaticamente)
+      return [
+        { title: "The Legend of Zelda: Tears of the Kingdom", discount_percent: 0, msrp: 405.84, sale_price: null, currency: "BRL", region: "US", game_id: "zelda-tears-of-the-kingdom" },
+        { title: "Super Mario Bros. Wonder", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "super-mario-bros-wonder" },
+        { title: "Mario Kart 8 Deluxe", discount_percent: 0, msrp: 347.88, sale_price: null, currency: "BRL", region: "US", game_id: "mario-kart-8-deluxe" },
+        { title: "#RaceDieRun", discount_percent: 80, msrp: 57.90, sale_price: 11.54, currency: "BRL", region: "US", game_id: "racedierun-switch" },
+        { title: "A Short Hike", discount_percent: 30, msrp: 46.29, sale_price: 32.42, currency: "BRL", region: "US", game_id: "a-short-hike-switch" },
+      ];
+    }
+
+    // Atualizar estatísticas
+    function updateStats() {
+      const total = filteredGames.length;
+      const onSale = filteredGames.filter(g => g.discount_percent > 0).length;
+      const avgDiscount = onSale > 0
+        ? Math.round(filteredGames.filter(g => g.discount_percent > 0).reduce((sum, g) => sum + g.discount_percent, 0) / onSale)
+        : 0;
+      const maxDiscount = total > 0
+        ? Math.max(...filteredGames.map(g => g.discount_percent))
+        : 0;
+
+      document.getElementById('totalGames').textContent = total;
+      document.getElementById('totalSales').textContent = onSale;
+      document.getElementById('avgDiscount').textContent = avgDiscount + '%';
+      document.getElementById('maxDiscount').textContent = maxDiscount + '%';
+    }
+
+    // Renderizar jogos
+    function renderGames() {
+      const grid = document.getElementById('gamesGrid');
+
+      if (filteredGames.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--muted); padding: 60px 20px;">Nenhum jogo encontrado.</p>';
+        return;
+      }
+
+      grid.innerHTML = filteredGames.map(game => {
+        const hasDiscount = game.discount_percent > 0;
+        const price = game.sale_price || game.msrp;
+
+        return `
+          <a href="jogo-detalhes.html?id=${game.game_id}" class="game-card">
+            <div class="game-cover">${game.title.substring(0, 20).toUpperCase()}</div>
+            <div class="game-title">${game.title}</div>
+            <div class="game-region">Nintendo Switch • ${game.region}</div>
+            <div class="game-prices">
+              ${hasDiscount ? `<span class="price-old">R$ ${game.msrp.toFixed(2)}</span>` : ''}
+              <span class="price">R$ ${price.toFixed(2)}</span>
+              ${hasDiscount ? `<span class="badge">-${game.discount_percent}%</span>` : ''}
+              ${!hasDiscount ? `<span class="badge badge-success">Preço normal</span>` : ''}
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    // Aplicar filtros
+    function applyFilters() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const type = document.getElementById('filterType').value;
+      const region = document.getElementById('filterRegion').value;
+      const sort = document.getElementById('sortBy').value;
+
+      // Filtrar
+      filteredGames = allGames.filter(game => {
+        const matchSearch = game.title.toLowerCase().includes(search);
+        const matchType = type === 'all' ||
+          (type === 'sale' && game.discount_percent > 0) ||
+          (type === 'no-sale' && game.discount_percent === 0);
+        const matchRegion = region === 'all' || game.region === region;
+
+        return matchSearch && matchType && matchRegion;
+      });
+
+      // Ordenar
+      filteredGames.sort((a, b) => {
+        switch (sort) {
+          case 'relevance':
+            return b.discount_percent - a.discount_percent;
+          case 'discount':
+            return b.discount_percent - a.discount_percent;
+          case 'price-low':
+            return (a.sale_price || a.msrp) - (b.sale_price || b.msrp);
+          case 'price-high':
+            return (b.sale_price || b.msrp) - (a.sale_price || a.msrp);
+          case 'title':
+            return a.title.localeCompare(b.title);
+          default:
+            return 0;
+        }
+      });
+
+      updateStats();
+      renderGames();
+    }
+
+    // Event listeners
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('filterType').addEventListener('change', applyFilters);
+    document.getElementById('filterRegion').addEventListener('change', applyFilters);
+    document.getElementById('sortBy').addEventListener('change', applyFilters);
+
+    // Carregar ao iniciar
+    loadGames();
+  </script>
+</body>
+</html>
