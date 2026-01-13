@@ -46,8 +46,8 @@ def update_ofertas_nintendo():
     # Gerar JS
     js_items = []
     for game in sales_data:
-        # Escapar aspas duplas no título
-        title = game["title"].replace('"', '\\"')
+        # Escapar caracteres especiais no título
+        title = game["title"].replace('\\', '\\\\').replace('"', '\\"').replace('\n', ' ').replace('\r', '').replace('\t', ' ')
         # Usar msrp_brl (preço original) e price_brl (preço com desconto)
         msrp_brl = game.get("msrp_brl", game["price_brl"])
         sale_price_brl = game["price_brl"]
@@ -99,8 +99,8 @@ def update_nintendo_page():
     # Gerar JS com TODOS os jogos
     js_items = []
     for game in sales_data:  # TODOS os jogos
-        # Escapar aspas duplas no título
-        title = game["title"].replace('"', '\\"')
+        # Escapar caracteres especiais no título
+        title = game["title"].replace('\\', '\\\\').replace('"', '\\"').replace('\n', ' ').replace('\r', '').replace('\t', ' ')
         # Usar msrp_brl (preço original) e price_brl (preço com desconto)
         msrp_brl = game.get("msrp_brl", game["price_brl"])
         sale_price_brl = game["price_brl"]
