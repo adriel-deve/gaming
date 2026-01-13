@@ -413,17 +413,36 @@
 
     // Carregar jogos (usando dados locais para máxima performance)
     function loadGames() {
-      // Usar dados locais embutidos (200 jogos) - carregamento instantâneo
-      allGames = getLocalGames();
+      try {
+        console.log('[DEBUG] loadGames started');
 
-      filteredGames = [...allGames];
-      currentIndex = 0;
-      displayedGames = [];
-      updateStats();
-      loadMoreGames(); // Carregar primeira leva de jogos
+        // Usar dados locais embutidos (200 jogos) - carregamento instantâneo
+        allGames = getLocalGames();
+        console.log('[DEBUG] Got games:', allGames.length);
 
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('gamesGrid').style.display = 'grid';
+        filteredGames = [...allGames];
+        currentIndex = 0;
+        displayedGames = [];
+
+        console.log('[DEBUG] Calling updateStats');
+        updateStats();
+
+        console.log('[DEBUG] Calling loadMoreGames');
+        loadMoreGames(); // Carregar primeira leva de jogos
+
+        console.log('[DEBUG] Hiding loading, showing grid');
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('gamesGrid').style.display = 'grid';
+
+        console.log('[DEBUG] loadGames completed successfully');
+      } catch (error) {
+        console.error('[ERROR] Failed to load games:', error);
+        const loadingEl = document.getElementById('loading');
+        if (loadingEl) {
+          loadingEl.textContent = 'Erro ao carregar jogos: ' + error.message;
+          loadingEl.style.color = '#ff4444';
+        }
+      }
     }
 
     // Carregar mais jogos (scroll infinito)
@@ -771,14 +790,37 @@
       loadMoreGames(); // Carregar primeira leva com novos filtros
     }
 
-    // Event listeners
-    document.getElementById('searchInput').addEventListener('input', applyFilters);
-    document.getElementById('filterType').addEventListener('change', applyFilters);
-    document.getElementById('filterRegion').addEventListener('change', applyFilters);
-    document.getElementById('sortBy').addEventListener('change', applyFilters);
+    // Inicializar quando DOM estiver pronto
+    function init() {
+      try {
+        console.log('[DEBUG] Initializing app');
 
-    // Carregar ao iniciar
-    loadGames();
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.getElementById('filterType').addEventListener('change', applyFilters);
+        document.getElementById('filterRegion').addEventListener('change', applyFilters);
+        document.getElementById('sortBy').addEventListener('change', applyFilters);
+
+        console.log('[DEBUG] Event listeners attached');
+
+        // Carregar ao iniciar
+        loadGames();
+      } catch (error) {
+        console.error('[ERROR] Initialization failed:', error);
+        const loadingEl = document.getElementById('loading');
+        if (loadingEl) {
+          loadingEl.textContent = 'Erro ao inicializar: ' + error.message;
+          loadingEl.style.color = '#ff4444';
+        }
+      }
+    }
+
+    // Run initialization
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   </script>
 </body>
 </html>
