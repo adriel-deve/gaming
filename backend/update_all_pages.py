@@ -72,7 +72,7 @@ def update_ofertas_nintendo():
     print(f"[OK] ofertas-nintendo.html atualizada com {len(sales_data)} jogos!")
 
 def update_nintendo_page():
-    """Atualizar nintendo.html"""
+    """Atualizar nintendo.html e gerar arquivo JSON externo"""
     print("\n" + "="*60)
     print("3. ATUALIZANDO nintendo.html...")
     print("="*60)
@@ -81,16 +81,26 @@ def update_nintendo_page():
     with open('nintendo_sales_data.json', 'r', encoding='utf-8') as f:
         sales_data = json.load(f)
 
-    # Gerar JS
+    # Gerar arquivo JSON externo (apenas os primeiros 200 como fallback)
+    print("  Gerando arquivo JSON externo...")
+    os.makedirs('../data', exist_ok=True)
+
+    # Copiar dados completos para o arquivo JSON externo
+    with open('../data/nintendo-games.json', 'w', encoding='utf-8') as f:
+        json.dump(sales_data, f, ensure_ascii=False)
+
+    print(f"  [OK] JSON externo criado com {len(sales_data)} jogos")
+
+    # Gerar JS com apenas os primeiros 200 jogos (backup)
     js_items = []
-    for game in sales_data:
+    for game in sales_data[:200]:  # Apenas os primeiros 200
         js_item = f'        {{ title: "{game["title"]}", discount_percent: {game["discount_percent"]}, msrp: {game["price_brl"]:.2f}, sale_price: {game["price_brl"]:.2f}, currency: "BRL", region: "{game["region"]}", game_id: "{game["game_id"]}" }}'
         js_items.append(js_item)
 
-    new_function = f'''    // Dados locais (backup)
+    new_function = f'''    // Dados locais (backup - primeiros 200 jogos)
     function getLocalGames() {{
       // Atualizado automaticamente a cada 6 horas via GitHub Actions
-      // Total: {len(sales_data)} jogos em promoção
+      // Total: {len(sales_data)} jogos em promoção | Mostrando primeiros 200 como fallback
       return [
 {",\\n".join(js_items)}
       ];
@@ -101,14 +111,14 @@ def update_nintendo_page():
         html_content = f.read()
 
     # Substituir
-    pattern = r'    // Dados locais \(backup\).*?\n    function getLocalGames\(\) \{.*?\n      \];\n    \}'
+    pattern = r'    // Dados locais \(backup.*?\).*?\n    function getLocalGames\(\) \{.*?\n      \];\n    \}'
     html_content_updated = re.sub(pattern, new_function, html_content, flags=re.DOTALL)
 
     # Salvar
     with open('../nintendo.html', 'w', encoding='utf-8') as f:
         f.write(html_content_updated)
 
-    print(f"[OK] nintendo.html atualizada com {len(sales_data)} jogos!")
+    print(f"[OK] nintendo.html atualizada com {len(sales_data)} jogos (200 embutidos + JSON externo)!")
 
 def main():
     print("PIPELINE DE ATUALIZAÇÃO - ESHOP PULSE")
