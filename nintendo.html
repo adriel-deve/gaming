@@ -408,25 +408,13 @@
     let filteredGames = [];
     let displayedGames = [];
     let currentIndex = 0;
-    const GAMES_PER_PAGE = 50; // Carregar 50 jogos por vez
+    const GAMES_PER_PAGE = 20; // Carregar apenas 20 jogos por vez (mais rápido)
     let isLoading = false;
 
-    // Carregar jogos
-    async function loadGames() {
-      try {
-        // Tentar carregar do arquivo JSON externo
-        const response = await fetch('data/nintendo-games.json');
-        if (response.ok) {
-          const data = await response.json();
-          allGames = data || [];
-          console.log(`✅ Carregados ${allGames.length} jogos do arquivo JSON`);
-        } else {
-          throw new Error('JSON não disponível');
-        }
-      } catch (error) {
-        console.log('Arquivo JSON não disponível, usando dados locais (fallback)');
-        allGames = getLocalGames();
-      }
+    // Carregar jogos (usando dados locais para máxima performance)
+    function loadGames() {
+      // Usar dados locais embutidos (200 jogos) - carregamento instantâneo
+      allGames = getLocalGames();
 
       filteredGames = [...allGames];
       currentIndex = 0;
