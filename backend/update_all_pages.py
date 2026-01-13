@@ -91,18 +91,18 @@ def update_nintendo_page():
 
     print(f"  [OK] JSON externo criado com {len(sales_data)} jogos")
 
-    # Gerar JS com apenas os primeiros 200 jogos (backup)
+    # Gerar JS com TODOS os jogos
     js_items = []
-    for game in sales_data[:200]:  # Apenas os primeiros 200
+    for game in sales_data:  # TODOS os jogos
         # Escapar aspas duplas no título
         title = game["title"].replace('"', '\\"')
         js_item = f'        {{ title: "{title}", discount_percent: {game["discount_percent"]}, msrp: {game["price_brl"]:.2f}, sale_price: {game["price_brl"]:.2f}, currency: "BRL", region: "{game["region"]}", game_id: "{game["game_id"]}" }}'
         js_items.append(js_item)
 
-    new_function = f'''    // Dados locais (backup - primeiros 200 jogos)
+    new_function = f'''    // Dados locais (todos os {len(sales_data)} jogos)
     function getLocalGames() {{
       // Atualizado automaticamente a cada 6 horas via GitHub Actions
-      // Total: {len(sales_data)} jogos em promoção | Mostrando primeiros 200 como fallback
+      // Total: {len(sales_data)} jogos em promoção
       return [
 {",\\n".join(js_items)}
       ];
@@ -113,7 +113,7 @@ def update_nintendo_page():
         html_content = f.read()
 
     # Substituir
-    pattern = r'    // Dados locais \(backup.*?\).*?\n    function getLocalGames\(\) \{.*?\n      \];\n    \}'
+    pattern = r'    // Dados locais.*?\n    function getLocalGames\(\) \{.*?\n      \];\n    \}'
     html_content_updated = re.sub(pattern, new_function, html_content, flags=re.DOTALL)
 
     # Salvar
