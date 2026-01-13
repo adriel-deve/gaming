@@ -403,9 +403,9 @@
         <h2 class="section-title">
           🌍 Comparação de Preços - Todos os Países
         </h2>
-        <p style="color: var(--muted); margin-bottom: 20px;">
+        <p style="color: var(--muted); margin-bottom: 20px;" id="comparisonDesc">
           Veja onde o jogo está mais barato, independente de estar em promoção ou não.
-          Preços convertidos para Reais (BRL) • Comparando: Estados Unidos (US) e Brasil (BR)
+          Preços convertidos para Reais (BRL)
         </p>
 
         <div class="prices-table">
@@ -616,11 +616,26 @@
       const worstPrice = pricesInBRL[pricesInBRL.length - 1];
       const savings = worstPrice.priceInBRL - bestPrice.priceInBRL;
 
+      // Atualizar descrição baseado no número de regiões
+      const regions = [...new Set(pricesInBRL.map(p => p.region))];
+      if (regions.length === 1) {
+        document.getElementById('comparisonDesc').textContent =
+          `Preço na região ${bestPrice.country.name}. Convertido para Reais (BRL).`;
+      } else {
+        document.getElementById('comparisonDesc').textContent =
+          `Veja onde o jogo está mais barato, independente de estar em promoção ou não. Preços convertidos para Reais (BRL) • Comparando: ${regions.join(', ')}`;
+      }
+
       // Atualizar header
       document.getElementById('gameTitle').textContent = game.title || gameId;
       document.getElementById('bestPrice').textContent = `R$ ${bestPrice.priceInBRL.toFixed(2)}`;
       document.getElementById('bestCountry').textContent = `${bestPrice.country.flag} ${bestPrice.country.name}`;
-      document.getElementById('bestDiscount').textContent = `Economia de R$ ${savings.toFixed(2)}`;
+
+      if (savings > 0) {
+        document.getElementById('bestDiscount').textContent = `Economia de R$ ${savings.toFixed(2)}`;
+      } else {
+        document.getElementById('bestDiscount').textContent = `Disponível apenas nesta região`;
+      }
 
       // Renderizar tabela
       const tbody = document.getElementById('pricesTableBody');
