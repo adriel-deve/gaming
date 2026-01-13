@@ -405,7 +405,7 @@
         </h2>
         <p style="color: var(--muted); margin-bottom: 20px;">
           Veja onde o jogo está mais barato, independente de estar em promoção ou não.
-          Preços convertidos para Reais (BRL) • Total: 27 países
+          Preços convertidos para Reais (BRL) • Comparando: Estados Unidos (US) e Brasil (BR)
         </p>
 
         <div class="prices-table">
@@ -477,20 +477,27 @@
     // Carregar dados do jogo
     async function loadGameData() {
       try {
-        // Tentar carregar da API
-        const response = await fetch(`/api/prices?game_id=${gameId}`);
-        const data = await response.json();
+        // Carregar dados reais do JSON
+        const response = await fetch('/data/multi-region-prices.json');
+        const allGames = await response.json();
 
-        if (data.items && data.items.length > 0) {
-          displayGameData(data.items);
+        // Buscar o jogo pelo slug ou NSUID
+        const game = allGames.find(g =>
+          (g.slug && g.slug === gameId) ||
+          (g.nsuid && g.nsuid === gameId) ||
+          (g.title && g.title.toLowerCase().replace(/[^a-z0-9]/g, '-') === gameId)
+        );
+
+        if (game && game.prices) {
+          displayGameData(game);
           return;
         }
       } catch (error) {
-        console.log('API não disponível, usando dados de exemplo');
+        console.error('Erro ao carregar dados:', error);
       }
 
-      // Usar dados de exemplo
-      displayGameData(getDemoData());
+      // Usar dados de exemplo se não encontrar
+      displayGameData(null);
     }
 
     // Dados de exemplo com TODOS os países
@@ -584,16 +591,20 @@
     }
 
     // Exibir dados do jogo
-    function displayGameData(prices) {
-      // Calcular preços em reais
-      const pricesInBRL = prices.map(p => {
+    function displayGameData(game) {
+      if (!game || !game.prices) {
+        document.getElementById('loading').innerHTML = '<p>Jogo não encontrado ou sem dados de comparação de preços</p>';
+        return;
+      }
+
+      // Os preços já vêm em BRL no JSON
+      const pricesInBRL = game.prices.map(p => {
         const country = COUNTRIES[p.region];
-        const priceInBRL = (p.sale_price || p.msrp) * (country?.rate || 1);
         return {
           ...p,
-          country: country,
-          priceInBRL: priceInBRL,
-          originalInBRL: p.msrp * (country?.rate || 1)
+          country: country || { name: p.region, flag: '🌍', currency: p.currency },
+          priceInBRL: p.price_brl,
+          originalInBRL: p.msrp_brl
         };
       });
 
@@ -606,7 +617,7 @@
       const savings = worstPrice.priceInBRL - bestPrice.priceInBRL;
 
       // Atualizar header
-      document.getElementById('gameTitle').textContent = prices[0]?.title || gameId;
+      document.getElementById('gameTitle').textContent = game.title || gameId;
       document.getElementById('bestPrice').textContent = `R$ ${bestPrice.priceInBRL.toFixed(2)}`;
       document.getElementById('bestCountry').textContent = `${bestPrice.country.flag} ${bestPrice.country.name}`;
       document.getElementById('bestDiscount').textContent = `Economia de R$ ${savings.toFixed(2)}`;
@@ -615,27 +626,26 @@
       const tbody = document.getElementById('pricesTableBody');
       tbody.innerHTML = pricesInBRL.map((p, index) => {
         const isBest = index === 0;
-        const hasDiscount = p.discount > 0;
-        const finalPrice = p.sale_price || p.msrp;
+        const hasDiscount = p.discount_percent > 0;
 
         return `
           <div class="price-row ${isBest ? 'best-deal' : ''}">
             <div class="flag">${p.country.flag}</div>
             <div>
               <div class="country-name">${p.country.name}</div>
-              <div class="country-code">${p.region} • ${p.country.currency}</div>
+              <div class="country-code">${p.region} • ${p.currency}</div>
             </div>
             <div class="${hasDiscount ? 'price-original' : 'price'}">
-              ${p.country.currency} ${p.msrp.toFixed(2)}
+              ${p.currency} ${p.msrp.toFixed(2)}
             </div>
             <div class="price ${hasDiscount ? 'price-sale' : ''}">
-              ${hasDiscount ? p.country.currency + ' ' + p.sale_price.toFixed(2) : '-'}
+              ${hasDiscount ? p.currency + ' ' + p.sale_price.toFixed(2) : '-'}
             </div>
             <div class="price ${hasDiscount ? 'price-sale' : ''}">
               R$ ${p.priceInBRL.toFixed(2)}
             </div>
             <div>
-              ${hasDiscount ? `<span class="discount-badge">-${p.discount}%</span>` : `<span style="color: var(--muted); font-size: 0.85rem;">Sem desconto</span>`}
+              ${hasDiscount ? `<span class="discount-badge">-${p.discount_percent}%</span>` : `<span style="color: var(--muted); font-size: 0.85rem;">Sem desconto</span>`}
               ${isBest ? '<div class="badge-best" style="margin-top: 6px;">MAIS BARATO</div>' : ''}
             </div>
           </div>
