@@ -8,8 +8,8 @@ import re
 with open('nintendo_sales_data.json', 'r', encoding='utf-8') as f:
     sales_data = json.load(f)
 
-# Pegar apenas os primeiros 50 jogos para manter a página rápida
-sales_data = sales_data[:50]
+# Pegar TODOS os jogos (performance otimizada no frontend)
+# sales_data já contém todos os jogos
 
 # Gerar os dados JS
 js_items = []
@@ -39,5 +39,6 @@ html_content_updated = re.sub(pattern, replacement, html_content, flags=re.DOTAL
 with open('../ofertas-nintendo.html', 'w', encoding='utf-8') as f:
     f.write(html_content_updated)
 
-print(f'[OK] Página atualizada com {len(sales_data)} jogos em promoção!')
-print(f'Total disponível: 1052 jogos')
+print(f'[OK] Página nintendo.html atualizada com {len(sales_data)} jogos!')
+print(f'Dados salvos em: ../nintendo.html')
+print(f'Total de jogos em promoção: {len(sales_data)}')
