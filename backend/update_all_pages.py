@@ -46,7 +46,12 @@ def update_ofertas_nintendo():
     # Gerar JS
     js_items = []
     for game in sales_data:
-        js_item = f'        {{ title: "{game["title"]}", discount_percent: {game["discount_percent"]}, msrp: {game["price_brl"]:.2f}, sale_price: {game["price_brl"]:.2f}, currency: "BRL", region: "{game["region"]}", game_id: "{game["game_id"]}" }}'
+        # Escapar aspas duplas no título
+        title = game["title"].replace('"', '\\"')
+        # Usar msrp_brl (preço original) e price_brl (preço com desconto)
+        msrp_brl = game.get("msrp_brl", game["price_brl"])
+        sale_price_brl = game["price_brl"]
+        js_item = f'        {{ title: "{title}", discount_percent: {game["discount_percent"]}, msrp: {msrp_brl:.2f}, sale_price: {sale_price_brl:.2f}, currency: "BRL", region: "{game["region"]}", game_id: "{game["game_id"]}" }}'
         js_items.append(js_item)
 
     new_function = f'''    // Dados reais de {len(sales_data)} jogos em promoção (scraped da Nintendo eShop US)
@@ -96,7 +101,10 @@ def update_nintendo_page():
     for game in sales_data:  # TODOS os jogos
         # Escapar aspas duplas no título
         title = game["title"].replace('"', '\\"')
-        js_item = f'        {{ title: "{title}", discount_percent: {game["discount_percent"]}, msrp: {game["price_brl"]:.2f}, sale_price: {game["price_brl"]:.2f}, currency: "BRL", region: "{game["region"]}", game_id: "{game["game_id"]}" }}'
+        # Usar msrp_brl (preço original) e price_brl (preço com desconto)
+        msrp_brl = game.get("msrp_brl", game["price_brl"])
+        sale_price_brl = game["price_brl"]
+        js_item = f'        {{ title: "{title}", discount_percent: {game["discount_percent"]}, msrp: {msrp_brl:.2f}, sale_price: {sale_price_brl:.2f}, currency: "BRL", region: "{game["region"]}", game_id: "{game["game_id"]}" }}'
         js_items.append(js_item)
 
     new_function = f'''    // Dados locais (todos os {len(sales_data)} jogos)

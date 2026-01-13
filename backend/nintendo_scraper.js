@@ -19,11 +19,11 @@ const CURRENCY_RATES = {
 };
 
 /**
- * Buscar jogos em promoção na região US
+ * Buscar TODOS os jogos da região US (com e sem promoção)
  */
-async function getUSSales() {
+async function getUSGames() {
     console.log('\n========================================');
-    console.log('Buscando jogos nos EUA...');
+    console.log('Buscando TODOS os jogos nos EUA...');
     console.log('========================================\n');
 
     try {
@@ -33,41 +33,50 @@ async function getUSSales() {
 
         console.log(`  Total de jogos encontrados: ${games.length}`);
 
-        // Filtrar jogos com desconto (que já vêm com informações de preço)
-        console.log('  Filtrando jogos em promocao...');
-        const gamesWithSales = [];
+        // Processar TODOS os jogos (com e sem desconto)
+        console.log('  Processando todos os jogos...');
+        const allGames = [];
+        let gamesWithSales = 0;
 
         for (const game of games) {
-            // Verificar se o jogo tem informação de desconto
-            if (game.salePrice && game.msrp && game.salePrice < game.msrp) {
-                const discount = Math.round((1 - game.salePrice / game.msrp) * 100);
+            // Verificar se o jogo tem informação de preço
+            if (game.msrp && game.msrp > 0) {
+                // Determinar se tem desconto
+                const salePrice = game.salePrice || game.msrp;
+                const hasDiscount = game.salePrice && game.salePrice < game.msrp;
+                const discount = hasDiscount ? Math.round((1 - game.salePrice / game.msrp) * 100) : 0;
 
-                if (discount > 0) {
-                    gamesWithSales.push({
-                        title: game.title,
-                        nsuid: game.nsuid,
-                        store: 'nintendo',
-                        platform: 'switch',
-                        region: 'US',
-                        currency: 'USD',
-                        msrp: game.msrp,
-                        sale_price: game.salePrice,
-                        discount_percent: discount,
-                        price_brl: game.salePrice * CURRENCY_RATES.USD,
-                        game_id: game.slug || game.nsuid?.replace(/\D/g, ''),
-                        url: game.url || `https://www.nintendo.com/us/store/products/${game.slug}`,
-                    });
+                if (hasDiscount) {
+                    gamesWithSales++;
                 }
+
+                allGames.push({
+                    title: game.title,
+                    nsuid: game.nsuid,
+                    store: 'nintendo',
+                    platform: 'switch',
+                    region: 'US',
+                    currency: 'USD',
+                    msrp: game.msrp,
+                    sale_price: salePrice,
+                    discount_percent: discount,
+                    msrp_brl: game.msrp * CURRENCY_RATES.USD,
+                    price_brl: salePrice * CURRENCY_RATES.USD,
+                    game_id: game.slug || game.nsuid?.replace(/\D/g, ''),
+                    url: game.url || `https://www.nintendo.com/us/store/products/${game.slug}`,
+                });
             }
 
             // Log a cada 500 jogos
             if ((games.indexOf(game) + 1) % 500 === 0) {
-                console.log(`    Processados ${games.indexOf(game) + 1}/${games.length} jogos... (${gamesWithSales.length} em promocao)`);
+                console.log(`    Processados ${games.indexOf(game) + 1}/${games.length} jogos... (${allGames.length} com preco, ${gamesWithSales} em promocao)`);
             }
         }
 
-        console.log(`\n[OK] Total de promocoes encontradas: ${gamesWithSales.length}`);
-        return gamesWithSales;
+        console.log(`\n[OK] Total de jogos com preco: ${allGames.length}`);
+        console.log(`[OK] Jogos em promocao: ${gamesWithSales}`);
+        console.log(`[OK] Jogos sem promocao: ${allGames.length - gamesWithSales}`);
+        return allGames;
 
     } catch (error) {
         console.error(`[ERRO] Erro ao buscar jogos: ${error.message}`);
@@ -82,32 +91,35 @@ async function getUSSales() {
  */
 async function main() {
     console.log('============================================================');
-    console.log('NINTENDO SWITCH ESHOP SCRAPER');
+    console.log('NINTENDO SWITCH ESHOP SCRAPER - CATALOGO COMPLETO');
     console.log('============================================================');
 
-    // Buscar promoções dos EUA
-    const usSales = await getUSSales();
+    // Buscar TODOS os jogos dos EUA
+    const usGames = await getUSGames();
 
     // Combinar todos os resultados
-    const allSales = [...usSales];
+    const allGames = [...usGames];
 
     console.log('\n============================================================');
-    console.log(`TOTAL GERAL: ${allSales.length} jogos em promocao`);
+    console.log(`TOTAL GERAL: ${allGames.length} jogos no catalogo`);
     console.log('============================================================\n');
 
     // Mostrar os primeiros 20
     console.log('Primeiros 20 jogos:');
-    allSales.slice(0, 20).forEach((game, i) => {
-        console.log(`${i + 1}. ${game.title.substring(0, 40).padEnd(40)} -${game.discount_percent}% | $${game.sale_price.toFixed(2)} (R$ ${game.price_brl.toFixed(2)})`);
+    allGames.slice(0, 20).forEach((game, i) => {
+        const priceInfo = game.discount_percent > 0
+            ? `-${game.discount_percent}% | $${game.sale_price.toFixed(2)} (era $${game.msrp.toFixed(2)})`
+            : `$${game.msrp.toFixed(2)}`;
+        console.log(`${i + 1}. ${game.title.substring(0, 40).padEnd(40)} ${priceInfo}`);
     });
 
-    if (allSales.length > 20) {
-        console.log(`\n... e mais ${allSales.length - 20} jogos`);
+    if (allGames.length > 20) {
+        console.log(`\n... e mais ${allGames.length - 20} jogos`);
     }
 
     // Salvar em arquivo JSON
     const outputPath = 'nintendo_sales_data.json';
-    fs.writeFileSync(outputPath, JSON.stringify(allSales, null, 2));
+    fs.writeFileSync(outputPath, JSON.stringify(allGames, null, 2));
     console.log(`\nDados salvos em: ${outputPath}`);
 }
 
