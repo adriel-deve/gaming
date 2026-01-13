@@ -14,7 +14,9 @@ with open('nintendo_sales_data.json', 'r', encoding='utf-8') as f:
 # Gerar os dados JS
 js_items = []
 for game in sales_data:
-    js_item = f'        {{ title: "{game["title"]}", discount_percent: {game["discount_percent"]}, msrp: {game["price_brl"]:.2f}, sale_price: {game["price_brl"]:.2f}, currency: "BRL", region: "{game["region"]}", game_id: "{game["game_id"]}" }}'
+    # Escapar aspas duplas no título
+    title = game["title"].replace('"', '\\"')
+    js_item = f'        {{ title: "{title}", discount_percent: {game["discount_percent"]}, msrp: {game["price_brl"]:.2f}, sale_price: {game["price_brl"]:.2f}, currency: "BRL", region: "{game["region"]}", game_id: "{game["game_id"]}" }}'
     js_items.append(js_item)
 
 new_function = f'''    // Dados reais de {len(sales_data)} jogos em promoção (scraped da Nintendo eShop US)

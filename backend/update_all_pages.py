@@ -94,7 +94,9 @@ def update_nintendo_page():
     # Gerar JS com apenas os primeiros 200 jogos (backup)
     js_items = []
     for game in sales_data[:200]:  # Apenas os primeiros 200
-        js_item = f'        {{ title: "{game["title"]}", discount_percent: {game["discount_percent"]}, msrp: {game["price_brl"]:.2f}, sale_price: {game["price_brl"]:.2f}, currency: "BRL", region: "{game["region"]}", game_id: "{game["game_id"]}" }}'
+        # Escapar aspas duplas no título
+        title = game["title"].replace('"', '\\"')
+        js_item = f'        {{ title: "{title}", discount_percent: {game["discount_percent"]}, msrp: {game["price_brl"]:.2f}, sale_price: {game["price_brl"]:.2f}, currency: "BRL", region: "{game["region"]}", game_id: "{game["game_id"]}" }}'
         js_items.append(js_item)
 
     new_function = f'''    // Dados locais (backup - primeiros 200 jogos)
