@@ -70,3 +70,5 @@ htmlcov/
 *.output
 
 .vercel
+backend/node_modules/
+backend/*.txt

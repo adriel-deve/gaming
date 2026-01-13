@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This folder contains a simple pipeline to collect, normalize, store, and serve game price data. It uses only Python standard library so you can plug in a real data provider later.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nintendo-switch-eshop": "^9.0.0"
+  }
+}
