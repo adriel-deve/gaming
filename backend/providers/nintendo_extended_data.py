@@ -29,12 +29,13 @@ POPULAR_GAMES = [
         "genre": "Platform",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 49.99},
-            "BR": {"msrp": 299.00, "sale": 248.67},
-            "JP": {"msrp": 6578, "sale": 5590},
-            "GB": {"msrp": 49.99, "sale": 42.49},
-            "DE": {"msrp": 59.99, "sale": 50.99},
-            "MX": {"msrp": 1199, "sale": 995},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "JP": {"msrp": 6578, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
+            "DE": {"msrp": 59.99, "sale": None},
+            "MX": {"msrp": 1199, "sale": None},
+            "AR": {"msrp": 11999, "sale": None},
         }
     },
     {
@@ -44,14 +45,13 @@ POPULAR_GAMES = [
         "genre": "Racing",
         "rating": 10,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 41.99},
-            "BR": {"msrp": 299.00, "sale": 209.30},
-            "JP": {"msrp": 6578, "sale": 4604},
-            "GB": {"msrp": 49.99, "sale": 34.99},
-            "DE": {"msrp": 59.99, "sale": 41.99},
-            "MX": {"msrp": 1199, "sale": 839},
-            "AR": {"msrp": 12999, "sale": 9099},
-            "RU": {"msrp": 4999, "sale": 3499},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "JP": {"msrp": 6578, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
+            "DE": {"msrp": 59.99, "sale": None},
+            "MX": {"msrp": 1199, "sale": None},
+            "AR": {"msrp": 11999, "sale": None},
         }
     },
     {
@@ -113,10 +113,11 @@ POPULAR_GAMES = [
         "genre": "Shooter",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 44.99},
-            "BR": {"msrp": 299.00, "sale": 224.25},
-            "JP": {"msrp": 6578, "sale": 4933},
-            "GB": {"msrp": 49.99, "sale": 37.49},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "JP": {"msrp": 6578, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
+            "DE": {"msrp": 59.99, "sale": None},
         }
     },
     {
@@ -126,10 +127,11 @@ POPULAR_GAMES = [
         "genre": "Adventure",
         "rating": 10,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 41.99},
-            "BR": {"msrp": 299.00, "sale": 209.30},
-            "JP": {"msrp": 7678, "sale": 5374},
-            "GB": {"msrp": 59.99, "sale": 41.99},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "JP": {"msrp": 7678, "sale": None},
+            "GB": {"msrp": 59.99, "sale": None},
+            "DE": {"msrp": 69.99, "sale": None},
         }
     },
     {
@@ -139,9 +141,10 @@ POPULAR_GAMES = [
         "genre": "Strategy",
         "rating": 8,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 47.99},
-            "BR": {"msrp": 299.00, "sale": 239.20},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
             "JP": {"msrp": 6578, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     {
@@ -151,9 +154,10 @@ POPULAR_GAMES = [
         "genre": "Adventure",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 39.99, "sale": 33.99},
-            "BR": {"msrp": 199.00, "sale": 169.15},
+            "US": {"msrp": 39.99, "sale": None},
+            "BR": {"msrp": 199.00, "sale": None},
             "JP": {"msrp": 4400, "sale": None},
+            "GB": {"msrp": 34.99, "sale": None},
         }
     },
     {
@@ -163,9 +167,10 @@ POPULAR_GAMES = [
         "genre": "Adventure",
         "rating": 8,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 41.99},
-            "BR": {"msrp": 299.00, "sale": 209.30},
-            "JP": {"msrp": 6578, "sale": 4604},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "JP": {"msrp": 6578, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     {
@@ -187,9 +192,10 @@ POPULAR_GAMES = [
         "genre": "Platform",
         "rating": 8,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 41.99},
-            "BR": {"msrp": 299.00, "sale": 209.30},
-            "JP": {"msrp": 6578, "sale": 4604},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "JP": {"msrp": 6578, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     {
@@ -211,9 +217,10 @@ POPULAR_GAMES = [
         "genre": "Action",
         "rating": 8,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 41.99},
-            "BR": {"msrp": 299.00, "sale": 209.30},
-            "JP": {"msrp": 7678, "sale": 5374},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "JP": {"msrp": 7678, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     {
@@ -223,9 +230,11 @@ POPULAR_GAMES = [
         "genre": "Strategy",
         "rating": 7,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 49.99},
-            "BR": {"msrp": 299.00, "sale": 248.67},
-            "JP": {"msrp": 7678, "sale": 6526},
+            "US": {"msrp": 59.99, "sale": 14.99},
+            "BR": {"msrp": 299.00, "sale": 74.75},
+            "JP": {"msrp": 7678, "sale": None},
+            "GB": {"msrp": 49.99, "sale": 12.49},
+            "DE": {"msrp": 59.99, "sale": 14.99},
         }
     },
     {
@@ -235,9 +244,10 @@ POPULAR_GAMES = [
         "genre": "Adventure",
         "rating": 8,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 44.99},
-            "BR": {"msrp": 299.00, "sale": 224.25},
-            "JP": {"msrp": 6578, "sale": 4933},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "JP": {"msrp": 6578, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     {
@@ -259,8 +269,9 @@ POPULAR_GAMES = [
         "genre": "Platform",
         "rating": 7,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 41.99},
-            "BR": {"msrp": 299.00, "sale": 209.30},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "JP": {"msrp": 6578, "sale": None},
         }
     },
     # Jogos third-party populares
@@ -283,9 +294,10 @@ POPULAR_GAMES = [
         "genre": "Simulation",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 14.99, "sale": 8.99},
-            "BR": {"msrp": 74.00, "sale": 44.40},
-            "JP": {"msrp": 1480, "sale": 888},
+            "US": {"msrp": 14.99, "sale": None},
+            "BR": {"msrp": 74.00, "sale": None},
+            "JP": {"msrp": 1480, "sale": None},
+            "GB": {"msrp": 10.99, "sale": None},
         }
     },
     {
@@ -295,9 +307,10 @@ POPULAR_GAMES = [
         "genre": "Metroidvania",
         "rating": 10,
         "prices": {
-            "US": {"msrp": 14.99, "sale": 7.49},
-            "BR": {"msrp": 55.00, "sale": 27.99},
-            "JP": {"msrp": 1480, "sale": 740},
+            "US": {"msrp": 14.99, "sale": None},
+            "BR": {"msrp": 55.00, "sale": None},
+            "JP": {"msrp": 1480, "sale": None},
+            "GB": {"msrp": 10.99, "sale": None},
         }
     },
     {
@@ -307,8 +320,9 @@ POPULAR_GAMES = [
         "genre": "Roguelike",
         "rating": 10,
         "prices": {
-            "US": {"msrp": 24.99, "sale": 14.99},
-            "BR": {"msrp": 124.00, "sale": 74.40},
+            "US": {"msrp": 24.99, "sale": None},
+            "BR": {"msrp": 124.00, "sale": None},
+            "GB": {"msrp": 19.99, "sale": None},
         }
     },
     {
@@ -318,8 +332,9 @@ POPULAR_GAMES = [
         "genre": "Platform",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 19.99, "sale": 4.99},
-            "BR": {"msrp": 99.00, "sale": 24.75},
+            "US": {"msrp": 19.99, "sale": None},
+            "BR": {"msrp": 99.00, "sale": None},
+            "GB": {"msrp": 17.99, "sale": None},
         }
     },
     # Mais jogos populares Nintendo
@@ -330,11 +345,11 @@ POPULAR_GAMES = [
         "genre": "Platform",
         "rating": 10,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 41.99},
-            "BR": {"msrp": 299.00, "sale": 209.30},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
             "JP": {"msrp": 6578, "sale": None},
-            "GB": {"msrp": 49.99, "sale": 34.99},
-            "DE": {"msrp": 59.99, "sale": 41.99},
+            "GB": {"msrp": 49.99, "sale": None},
+            "DE": {"msrp": 59.99, "sale": None},
         }
     },
     {
@@ -369,10 +384,10 @@ POPULAR_GAMES = [
         "genre": "Party",
         "rating": 8,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 39.99},
-            "BR": {"msrp": 299.00, "sale": 199.33},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
             "JP": {"msrp": 6578, "sale": None},
-            "GB": {"msrp": 49.99, "sale": 33.32},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     {
@@ -394,9 +409,10 @@ POPULAR_GAMES = [
         "genre": "Platform",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 41.99},
-            "BR": {"msrp": 299.00, "sale": 209.30},
-            "JP": {"msrp": 6578, "sale": 4604},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "JP": {"msrp": 6578, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     # Jogos Third-Party Populares
@@ -407,9 +423,10 @@ POPULAR_GAMES = [
         "genre": "RPG",
         "rating": 10,
         "prices": {
-            "US": {"msrp": 39.99, "sale": 19.99},
-            "BR": {"msrp": 199.00, "sale": 99.50},
-            "GB": {"msrp": 34.99, "sale": 17.49},
+            "US": {"msrp": 39.99, "sale": None},
+            "BR": {"msrp": 199.00, "sale": None},
+            "GB": {"msrp": 34.99, "sale": None},
+            "JP": {"msrp": 4378, "sale": None},
         }
     },
     {
@@ -419,9 +436,10 @@ POPULAR_GAMES = [
         "genre": "RPG",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 29.99},
-            "BR": {"msrp": 299.00, "sale": 149.50},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
             "JP": {"msrp": 6578, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     {
@@ -431,8 +449,9 @@ POPULAR_GAMES = [
         "genre": "Puzzle",
         "rating": 8,
         "prices": {
-            "US": {"msrp": 24.99, "sale": 12.49},
-            "BR": {"msrp": 124.00, "sale": 62.00},
+            "US": {"msrp": 24.99, "sale": 6.24},
+            "BR": {"msrp": 124.00, "sale": 31.00},
+            "GB": {"msrp": 19.99, "sale": 4.99},
         }
     },
     {
@@ -442,8 +461,9 @@ POPULAR_GAMES = [
         "genre": "Action",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 19.99, "sale": 14.99},
-            "BR": {"msrp": 99.00, "sale": 74.25},
+            "US": {"msrp": 19.99, "sale": None},
+            "BR": {"msrp": 99.00, "sale": None},
+            "GB": {"msrp": 16.99, "sale": None},
         }
     },
     {
@@ -453,8 +473,9 @@ POPULAR_GAMES = [
         "genre": "Metroidvania",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 19.99, "sale": 9.99},
-            "BR": {"msrp": 99.00, "sale": 49.50},
+            "US": {"msrp": 19.99, "sale": None},
+            "BR": {"msrp": 99.00, "sale": None},
+            "GB": {"msrp": 16.99, "sale": None},
         }
     },
     {
@@ -464,8 +485,9 @@ POPULAR_GAMES = [
         "genre": "RPG",
         "rating": 10,
         "prices": {
-            "US": {"msrp": 14.99, "sale": 11.99},
-            "BR": {"msrp": 74.00, "sale": 59.20},
+            "US": {"msrp": 14.99, "sale": None},
+            "BR": {"msrp": 74.00, "sale": None},
+            "GB": {"msrp": 11.99, "sale": None},
         }
     },
     {
@@ -475,8 +497,9 @@ POPULAR_GAMES = [
         "genre": "Roguelike",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 24.99, "sale": 12.49},
-            "BR": {"msrp": 124.00, "sale": 62.00},
+            "US": {"msrp": 24.99, "sale": 6.24},
+            "BR": {"msrp": 124.00, "sale": 31.00},
+            "GB": {"msrp": 19.99, "sale": 4.99},
         }
     },
     {
@@ -486,8 +509,9 @@ POPULAR_GAMES = [
         "genre": "Roguelike",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 24.99, "sale": 14.99},
-            "BR": {"msrp": 124.00, "sale": 74.40},
+            "US": {"msrp": 24.99, "sale": None},
+            "BR": {"msrp": 124.00, "sale": None},
+            "GB": {"msrp": 19.99, "sale": None},
         }
     },
     {
@@ -508,8 +532,9 @@ POPULAR_GAMES = [
         "genre": "Action",
         "rating": 10,
         "prices": {
-            "US": {"msrp": 39.99, "sale": 19.99},
-            "BR": {"msrp": 199.00, "sale": 99.50},
+            "US": {"msrp": 39.99, "sale": 9.99},
+            "BR": {"msrp": 199.00, "sale": 49.75},
+            "GB": {"msrp": 34.99, "sale": 8.74},
         }
     },
     {
@@ -519,9 +544,10 @@ POPULAR_GAMES = [
         "genre": "Action",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 39.99, "sale": 19.99},
-            "BR": {"msrp": 199.00, "sale": 99.50},
+            "US": {"msrp": 39.99, "sale": None},
+            "BR": {"msrp": 199.00, "sale": None},
             "JP": {"msrp": 5490, "sale": None},
+            "GB": {"msrp": 34.99, "sale": None},
         }
     },
     {
@@ -531,8 +557,9 @@ POPULAR_GAMES = [
         "genre": "Horror",
         "rating": 10,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 39.99},
-            "BR": {"msrp": 299.00, "sale": 199.33},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     {
@@ -542,9 +569,10 @@ POPULAR_GAMES = [
         "genre": "RPG",
         "rating": 10,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 39.99},
-            "BR": {"msrp": 299.00, "sale": 199.33},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
             "JP": {"msrp": 7678, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     {
@@ -554,8 +582,9 @@ POPULAR_GAMES = [
         "genre": "RPG",
         "rating": 8,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 29.99},
-            "BR": {"msrp": 299.00, "sale": 149.50},
+            "US": {"msrp": 59.99, "sale": None},
+            "BR": {"msrp": 299.00, "sale": None},
+            "GB": {"msrp": 49.99, "sale": None},
         }
     },
     {
@@ -565,9 +594,10 @@ POPULAR_GAMES = [
         "genre": "RPG",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 49.99, "sale": 24.99},
-            "BR": {"msrp": 249.00, "sale": 124.50},
+            "US": {"msrp": 49.99, "sale": None},
+            "BR": {"msrp": 249.00, "sale": None},
             "JP": {"msrp": 9878, "sale": None},
+            "GB": {"msrp": 39.99, "sale": None},
         }
     },
     {
@@ -577,8 +607,9 @@ POPULAR_GAMES = [
         "genre": "Shooter",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 39.99, "sale": 19.99},
-            "BR": {"msrp": 199.00, "sale": 99.50},
+            "US": {"msrp": 39.99, "sale": None},
+            "BR": {"msrp": 199.00, "sale": None},
+            "GB": {"msrp": 34.99, "sale": None},
         }
     },
     {
@@ -588,8 +619,9 @@ POPULAR_GAMES = [
         "genre": "Platform",
         "rating": 7,
         "prices": {
-            "US": {"msrp": 59.99, "sale": 29.99},
-            "BR": {"msrp": 299.00, "sale": 149.50},
+            "US": {"msrp": 59.99, "sale": 14.99},
+            "BR": {"msrp": 299.00, "sale": 74.75},
+            "GB": {"msrp": 49.99, "sale": 12.49},
         }
     },
     {
@@ -599,8 +631,9 @@ POPULAR_GAMES = [
         "genre": "Platform",
         "rating": 8,
         "prices": {
-            "US": {"msrp": 39.99, "sale": 19.99},
-            "BR": {"msrp": 199.00, "sale": 99.50},
+            "US": {"msrp": 39.99, "sale": None},
+            "BR": {"msrp": 199.00, "sale": None},
+            "GB": {"msrp": 34.99, "sale": None},
         }
     },
     {
@@ -610,8 +643,9 @@ POPULAR_GAMES = [
         "genre": "Platform",
         "rating": 8,
         "prices": {
-            "US": {"msrp": 39.99, "sale": 19.99},
-            "BR": {"msrp": 199.00, "sale": 99.50},
+            "US": {"msrp": 39.99, "sale": None},
+            "BR": {"msrp": 199.00, "sale": None},
+            "GB": {"msrp": 34.99, "sale": None},
         }
     },
     {
@@ -621,8 +655,9 @@ POPULAR_GAMES = [
         "genre": "Sandbox",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 29.99, "sale": 14.99},
-            "BR": {"msrp": 149.00, "sale": 74.50},
+            "US": {"msrp": 29.99, "sale": 8.99},
+            "BR": {"msrp": 149.00, "sale": 44.70},
+            "GB": {"msrp": 24.99, "sale": 7.49},
         }
     },
     {
@@ -632,8 +667,9 @@ POPULAR_GAMES = [
         "genre": "Platform",
         "rating": 9,
         "prices": {
-            "US": {"msrp": 29.99, "sale": 14.99},
-            "BR": {"msrp": 149.00, "sale": 74.50},
+            "US": {"msrp": 29.99, "sale": None},
+            "BR": {"msrp": 149.00, "sale": None},
+            "GB": {"msrp": 24.99, "sale": None},
         }
     },
 ]
