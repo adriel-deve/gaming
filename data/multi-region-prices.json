@@ -16655,6 +16655,24 @@
         "discount_percent": 0,
         "msrp_brl": 50,
         "price_brl": 50
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 11.99,
+        "sale_price": 11.99,
+        "discount_percent": 0,
+        "msrp_brl": 50.358000000000004,
+        "price_brl": 50.358000000000004
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 200.0,
+        "sale_price": 200.0,
+        "discount_percent": 0,
+        "msrp_brl": 64.0,
+        "price_brl": 64.0
       }
     ]
   },
@@ -16680,6 +16698,24 @@
         "discount_percent": 0,
         "msrp_brl": 24.99,
         "price_brl": 24.99
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 6.49,
+        "sale_price": 2.79,
+        "discount_percent": 43,
+        "msrp_brl": 27.258000000000003,
+        "price_brl": 11.718
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 99.0,
+        "sale_price": 42.99,
+        "discount_percent": 43,
+        "msrp_brl": 31.68,
+        "price_brl": 13.7568
       }
     ]
   },
@@ -16696,6 +16732,24 @@
         "discount_percent": 0,
         "msrp_brl": 57.942,
         "price_brl": 57.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 12.59,
+        "sale_price": 12.59,
+        "discount_percent": 0,
+        "msrp_brl": 52.878,
+        "price_brl": 52.878
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 189.99,
+        "sale_price": 189.99,
+        "discount_percent": 0,
+        "msrp_brl": 60.796800000000005,
+        "price_brl": 60.796800000000005
       }
     ]
   },
@@ -16721,6 +16775,24 @@
         "discount_percent": 0,
         "msrp_brl": 29.99,
         "price_brl": 29.99
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 4.99,
+        "sale_price": 4.99,
+        "discount_percent": 0,
+        "msrp_brl": 20.958000000000002,
+        "price_brl": 20.958000000000002
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 55.0,
+        "sale_price": 55.0,
+        "discount_percent": 0,
+        "msrp_brl": 17.6,
+        "price_brl": 17.6
       }
     ]
   },
@@ -16737,6 +16809,24 @@
         "discount_percent": 0,
         "msrp_brl": 46.342,
         "price_brl": 46.342
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 9.99,
+        "sale_price": 9.99,
+        "discount_percent": 0,
+        "msrp_brl": 41.958000000000006,
+        "price_brl": 41.958000000000006
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 149.0,
+        "sale_price": 149.0,
+        "discount_percent": 0,
+        "msrp_brl": 47.68,
+        "price_brl": 47.68
       }
     ]
   },
@@ -16753,6 +16843,24 @@
         "discount_percent": 60,
         "msrp_brl": 28.942,
         "price_brl": 11.542
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 6.99,
+        "sale_price": 6.99,
+        "discount_percent": 0,
+        "msrp_brl": 29.358,
+        "price_brl": 29.358
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 99.9,
+        "sale_price": 99.9,
+        "discount_percent": 0,
+        "msrp_brl": 31.968000000000004,
+        "price_brl": 31.968000000000004
       }
     ]
   },
@@ -16769,6 +16877,24 @@
         "discount_percent": 0,
         "msrp_brl": 28.942,
         "price_brl": 28.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 9.99,
+        "sale_price": 9.99,
+        "discount_percent": 0,
+        "msrp_brl": 41.958000000000006,
+        "price_brl": 41.958000000000006
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 119.0,
+        "sale_price": 119.0,
+        "discount_percent": 0,
+        "msrp_brl": 38.08,
+        "price_brl": 38.08
       }
     ]
   },
@@ -16785,6 +16911,24 @@
         "discount_percent": 0,
         "msrp_brl": 86.942,
         "price_brl": 86.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 19.99,
+        "sale_price": 19.99,
+        "discount_percent": 0,
+        "msrp_brl": 83.958,
+        "price_brl": 83.958
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 280.99,
+        "sale_price": 280.99,
+        "discount_percent": 0,
+        "msrp_brl": 89.91680000000001,
+        "price_brl": 89.91680000000001
       }
     ]
   },
@@ -16801,6 +16945,24 @@
         "discount_percent": 0,
         "msrp_brl": 17.342000000000002,
         "price_brl": 17.342000000000002
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 3.98,
+        "sale_price": 3.98,
+        "discount_percent": 0,
+        "msrp_brl": 16.716,
+        "price_brl": 16.716
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 66.38,
+        "sale_price": 66.38,
+        "discount_percent": 0,
+        "msrp_brl": 21.2416,
+        "price_brl": 21.2416
       }
     ]
   },
@@ -16817,6 +16979,24 @@
         "discount_percent": 0,
         "msrp_brl": 57.942,
         "price_brl": 57.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 9.99,
+        "sale_price": 9.99,
+        "discount_percent": 0,
+        "msrp_brl": 41.958000000000006,
+        "price_brl": 41.958000000000006
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 190.0,
+        "sale_price": 190.0,
+        "discount_percent": 0,
+        "msrp_brl": 60.800000000000004,
+        "price_brl": 60.800000000000004
       }
     ]
   },
@@ -16833,6 +17013,24 @@
         "discount_percent": 0,
         "msrp_brl": 46.342,
         "price_brl": 46.342
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 9.99,
+        "sale_price": 9.99,
+        "discount_percent": 0,
+        "msrp_brl": 41.958000000000006,
+        "price_brl": 41.958000000000006
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 169.99,
+        "sale_price": 169.99,
+        "discount_percent": 0,
+        "msrp_brl": 54.396800000000006,
+        "price_brl": 54.396800000000006
       }
     ]
   },
@@ -16858,6 +17056,24 @@
         "discount_percent": 0,
         "msrp_brl": 39.99,
         "price_brl": 39.99
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 9.99,
+        "sale_price": 9.99,
+        "discount_percent": 0,
+        "msrp_brl": 41.958000000000006,
+        "price_brl": 41.958000000000006
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 159.99,
+        "sale_price": 159.99,
+        "discount_percent": 0,
+        "msrp_brl": 51.1968,
+        "price_brl": 51.1968
       }
     ]
   },
@@ -16883,6 +17099,24 @@
         "discount_percent": 0,
         "msrp_brl": 29.99,
         "price_brl": 29.99
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 7.99,
+        "sale_price": 5.19,
+        "discount_percent": 65,
+        "msrp_brl": 33.558,
+        "price_brl": 21.798000000000002
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 132.99,
+        "sale_price": 86.44,
+        "discount_percent": 65,
+        "msrp_brl": 42.5568,
+        "price_brl": 27.6608
       }
     ]
   },
@@ -16899,6 +17133,24 @@
         "discount_percent": 0,
         "msrp_brl": 57.942,
         "price_brl": 57.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 6.49,
+        "sale_price": 6.49,
+        "discount_percent": 0,
+        "msrp_brl": 27.258000000000003,
+        "price_brl": 27.258000000000003
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 64.49,
+        "sale_price": 64.49,
+        "discount_percent": 0,
+        "msrp_brl": 20.636799999999997,
+        "price_brl": 20.636799999999997
       }
     ]
   },
@@ -16915,6 +17167,24 @@
         "discount_percent": 50,
         "msrp_brl": 28.942,
         "price_brl": 14.442
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 5.99,
+        "sale_price": 5.99,
+        "discount_percent": 0,
+        "msrp_brl": 25.158,
+        "price_brl": 25.158
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 89.99,
+        "sale_price": 89.99,
+        "discount_percent": 0,
+        "msrp_brl": 28.796799999999998,
+        "price_brl": 28.796799999999998
       }
     ]
   },
@@ -16931,6 +17201,24 @@
         "discount_percent": 0,
         "msrp_brl": 37.699999999999996,
         "price_brl": 37.699999999999996
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 8.0,
+        "sale_price": 8.0,
+        "discount_percent": 0,
+        "msrp_brl": 33.6,
+        "price_brl": 33.6
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 125.0,
+        "sale_price": 125.0,
+        "discount_percent": 0,
+        "msrp_brl": 40.0,
+        "price_brl": 40.0
       }
     ]
   },
@@ -16956,6 +17244,24 @@
         "discount_percent": 0,
         "msrp_brl": 74.95,
         "price_brl": 74.95
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 16.99,
+        "sale_price": 16.99,
+        "discount_percent": 0,
+        "msrp_brl": 71.35799999999999,
+        "price_brl": 71.35799999999999
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 239.99,
+        "sale_price": 239.99,
+        "discount_percent": 0,
+        "msrp_brl": 76.7968,
+        "price_brl": 76.7968
       }
     ]
   },
@@ -16972,6 +17278,15 @@
         "discount_percent": 0,
         "msrp_brl": 57.942,
         "price_brl": 57.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 12.99,
+        "sale_price": 12.99,
+        "discount_percent": 0,
+        "msrp_brl": 54.558,
+        "price_brl": 54.558
       }
     ]
   },
@@ -16997,6 +17312,24 @@
         "discount_percent": 0,
         "msrp_brl": 75,
         "price_brl": 75
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 18.99,
+        "sale_price": 18.99,
+        "discount_percent": 0,
+        "msrp_brl": 79.758,
+        "price_brl": 79.758
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 300.0,
+        "sale_price": 300.0,
+        "discount_percent": 0,
+        "msrp_brl": 96.0,
+        "price_brl": 96.0
       }
     ]
   },
@@ -17013,6 +17346,24 @@
         "discount_percent": 0,
         "msrp_brl": 75.342,
         "price_brl": 75.342
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 16.99,
+        "sale_price": 16.99,
+        "discount_percent": 0,
+        "msrp_brl": 71.35799999999999,
+        "price_brl": 71.35799999999999
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 249.99,
+        "sale_price": 249.99,
+        "discount_percent": 0,
+        "msrp_brl": 79.99680000000001,
+        "price_brl": 79.99680000000001
       }
     ]
   },
@@ -17038,6 +17389,24 @@
         "discount_percent": 0,
         "msrp_brl": 5.05,
         "price_brl": 5.05
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 1.32,
+        "sale_price": 1.32,
+        "discount_percent": 0,
+        "msrp_brl": 5.5440000000000005,
+        "price_brl": 5.5440000000000005
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 20.3,
+        "sale_price": 20.3,
+        "discount_percent": 0,
+        "msrp_brl": 6.496,
+        "price_brl": 6.496
       }
     ]
   },
@@ -17054,6 +17423,24 @@
         "discount_percent": 0,
         "msrp_brl": 57.942,
         "price_brl": 57.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 12.69,
+        "sale_price": 12.69,
+        "discount_percent": 0,
+        "msrp_brl": 53.298,
+        "price_brl": 53.298
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 193.99,
+        "sale_price": 193.99,
+        "discount_percent": 0,
+        "msrp_brl": 62.076800000000006,
+        "price_brl": 62.076800000000006
       }
     ]
   },
@@ -17079,6 +17466,24 @@
         "discount_percent": 33,
         "msrp_brl": 15,
         "price_brl": 10
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 3.99,
+        "sale_price": 2.79,
+        "discount_percent": 70,
+        "msrp_brl": 16.758000000000003,
+        "price_brl": 11.718
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 49.0,
+        "sale_price": 42.99,
+        "discount_percent": 88,
+        "msrp_brl": 15.68,
+        "price_brl": 13.7568
       }
     ]
   },
@@ -17095,6 +17500,24 @@
         "discount_percent": 0,
         "msrp_brl": 86.942,
         "price_brl": 86.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 18.99,
+        "sale_price": 18.99,
+        "discount_percent": 0,
+        "msrp_brl": 79.758,
+        "price_brl": 79.758
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 289.0,
+        "sale_price": 289.0,
+        "discount_percent": 0,
+        "msrp_brl": 92.48,
+        "price_brl": 92.48
       }
     ]
   },
@@ -17120,6 +17543,24 @@
         "discount_percent": 0,
         "msrp_brl": 74.99,
         "price_brl": 74.99
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 18.99,
+        "sale_price": 18.99,
+        "discount_percent": 0,
+        "msrp_brl": 79.758,
+        "price_brl": 79.758
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 299.0,
+        "sale_price": 299.0,
+        "discount_percent": 0,
+        "msrp_brl": 95.68,
+        "price_brl": 95.68
       }
     ]
   },
@@ -17145,6 +17586,24 @@
         "discount_percent": 0,
         "msrp_brl": 19.99,
         "price_brl": 19.99
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 5.99,
+        "sale_price": 5.99,
+        "discount_percent": 0,
+        "msrp_brl": 25.158,
+        "price_brl": 25.158
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 79.99,
+        "sale_price": 79.99,
+        "discount_percent": 0,
+        "msrp_brl": 25.596799999999998,
+        "price_brl": 25.596799999999998
       }
     ]
   },
@@ -17170,6 +17629,24 @@
         "discount_percent": 0,
         "msrp_brl": 78.75,
         "price_brl": 78.75
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 18.95,
+        "sale_price": 18.95,
+        "discount_percent": 0,
+        "msrp_brl": 79.59,
+        "price_brl": 79.59
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 307.5,
+        "sale_price": 307.5,
+        "discount_percent": 0,
+        "msrp_brl": 98.4,
+        "price_brl": 98.4
       }
     ]
   },
@@ -17186,6 +17663,24 @@
         "discount_percent": 80,
         "msrp_brl": 57.942,
         "price_brl": 11.542
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 11.99,
+        "sale_price": 11.99,
+        "discount_percent": 0,
+        "msrp_brl": 50.358000000000004,
+        "price_brl": 50.358000000000004
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 179.0,
+        "sale_price": 179.0,
+        "discount_percent": 0,
+        "msrp_brl": 57.28,
+        "price_brl": 57.28
       }
     ]
   },
@@ -17202,6 +17697,24 @@
         "discount_percent": 0,
         "msrp_brl": 11.542,
         "price_brl": 11.542
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 5.49,
+        "sale_price": 5.49,
+        "discount_percent": 0,
+        "msrp_brl": 23.058000000000003,
+        "price_brl": 23.058000000000003
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 70.0,
+        "sale_price": 70.0,
+        "discount_percent": 0,
+        "msrp_brl": 22.400000000000002,
+        "price_brl": 22.400000000000002
       }
     ]
   },
@@ -17218,6 +17731,24 @@
         "discount_percent": 33,
         "msrp_brl": 17.342000000000002,
         "price_brl": 11.542
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 3.49,
+        "sale_price": 2.99,
+        "discount_percent": 86,
+        "msrp_brl": 14.658000000000001,
+        "price_brl": 12.558000000000002
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 49.9,
+        "sale_price": 49.9,
+        "discount_percent": 0,
+        "msrp_brl": 15.968,
+        "price_brl": 15.968
       }
     ]
   },
@@ -17243,6 +17774,24 @@
         "discount_percent": 0,
         "msrp_brl": 51,
         "price_brl": 51
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 14.99,
+        "sale_price": 14.99,
+        "discount_percent": 0,
+        "msrp_brl": 62.958000000000006,
+        "price_brl": 62.958000000000006
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 229.0,
+        "sale_price": 229.0,
+        "discount_percent": 0,
+        "msrp_brl": 73.28,
+        "price_brl": 73.28
       }
     ]
   },
@@ -17259,6 +17808,24 @@
         "discount_percent": 0,
         "msrp_brl": 86.942,
         "price_brl": 86.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 18.89,
+        "sale_price": 18.89,
+        "discount_percent": 0,
+        "msrp_brl": 79.33800000000001,
+        "price_brl": 79.33800000000001
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 290.0,
+        "sale_price": 290.0,
+        "discount_percent": 0,
+        "msrp_brl": 92.8,
+        "price_brl": 92.8
       }
     ]
   },
@@ -17284,6 +17851,24 @@
         "discount_percent": 0,
         "msrp_brl": 4.99,
         "price_brl": 4.99
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 1.29,
+        "sale_price": 1.29,
+        "discount_percent": 0,
+        "msrp_brl": 5.418,
+        "price_brl": 5.418
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 19.99,
+        "sale_price": 19.99,
+        "discount_percent": 0,
+        "msrp_brl": 6.3968,
+        "price_brl": 6.3968
       }
     ]
   },
@@ -17309,6 +17894,24 @@
         "discount_percent": 0,
         "msrp_brl": 40.75,
         "price_brl": 40.75
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 10.63,
+        "sale_price": 10.63,
+        "discount_percent": 0,
+        "msrp_brl": 44.64600000000001,
+        "price_brl": 44.64600000000001
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 163.8,
+        "sale_price": 163.8,
+        "discount_percent": 0,
+        "msrp_brl": 52.416000000000004,
+        "price_brl": 52.416000000000004
       }
     ]
   },
@@ -17325,6 +17928,24 @@
         "discount_percent": 80,
         "msrp_brl": 57.942,
         "price_brl": 11.542
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 12.59,
+        "sale_price": 2.79,
+        "discount_percent": 22,
+        "msrp_brl": 52.878,
+        "price_brl": 11.718
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 199.9,
+        "sale_price": 42.99,
+        "discount_percent": 22,
+        "msrp_brl": 63.968,
+        "price_brl": 13.7568
       }
     ]
   },
@@ -17341,6 +17962,24 @@
         "discount_percent": 0,
         "msrp_brl": 28.942,
         "price_brl": 28.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 6.55,
+        "sale_price": 6.55,
+        "discount_percent": 0,
+        "msrp_brl": 27.51,
+        "price_brl": 27.51
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 105.99,
+        "sale_price": 105.99,
+        "discount_percent": 0,
+        "msrp_brl": 33.9168,
+        "price_brl": 33.9168
       }
     ]
   },
@@ -17366,6 +18005,24 @@
         "discount_percent": 0,
         "msrp_brl": 25.45,
         "price_brl": 25.45
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 6.29,
+        "sale_price": 2.79,
+        "discount_percent": 44,
+        "msrp_brl": 26.418000000000003,
+        "price_brl": 11.718
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 96.81,
+        "sale_price": 42.99,
+        "discount_percent": 44,
+        "msrp_brl": 30.979200000000002,
+        "price_brl": 13.7568
       }
     ]
   },
@@ -17391,6 +18048,24 @@
         "discount_percent": 0,
         "msrp_brl": 50.95,
         "price_brl": 50.95
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 13.29,
+        "sale_price": 13.29,
+        "discount_percent": 0,
+        "msrp_brl": 55.818,
+        "price_brl": 55.818
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 204.8,
+        "sale_price": 204.8,
+        "discount_percent": 0,
+        "msrp_brl": 65.536,
+        "price_brl": 65.536
       }
     ]
   },
@@ -17416,6 +18091,24 @@
         "discount_percent": 0,
         "msrp_brl": 10.89,
         "price_brl": 10.89
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 6.99,
+        "sale_price": 2.79,
+        "discount_percent": 40,
+        "msrp_brl": 29.358,
+        "price_brl": 11.718
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 99.99,
+        "sale_price": 42.99,
+        "discount_percent": 43,
+        "msrp_brl": 31.9968,
+        "price_brl": 13.7568
       }
     ]
   },
@@ -17441,6 +18134,24 @@
         "discount_percent": 0,
         "msrp_brl": 15.99,
         "price_brl": 15.99
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 3.99,
+        "sale_price": 2.79,
+        "discount_percent": 70,
+        "msrp_brl": 16.758000000000003,
+        "price_brl": 11.718
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 66.99,
+        "sale_price": 46.89,
+        "discount_percent": 70,
+        "msrp_brl": 21.436799999999998,
+        "price_brl": 15.004800000000001
       }
     ]
   },
@@ -17457,6 +18168,24 @@
         "discount_percent": 0,
         "msrp_brl": 57.942,
         "price_brl": 57.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 9.99,
+        "sale_price": 9.99,
+        "discount_percent": 0,
+        "msrp_brl": 41.958000000000006,
+        "price_brl": 41.958000000000006
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 155.0,
+        "sale_price": 155.0,
+        "discount_percent": 0,
+        "msrp_brl": 49.6,
+        "price_brl": 49.6
       }
     ]
   },
@@ -17482,6 +18211,24 @@
         "discount_percent": 0,
         "msrp_brl": 79.99,
         "price_brl": 79.99
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 18.99,
+        "sale_price": 7.59,
+        "discount_percent": 40,
+        "msrp_brl": 79.758,
+        "price_brl": 31.878
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 290.0,
+        "sale_price": 116.0,
+        "discount_percent": 40,
+        "msrp_brl": 92.8,
+        "price_brl": 37.12
       }
     ]
   },
@@ -17498,6 +18245,24 @@
         "discount_percent": 75,
         "msrp_brl": 86.942,
         "price_brl": 21.692
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 18.89,
+        "sale_price": 18.89,
+        "discount_percent": 0,
+        "msrp_brl": 79.33800000000001,
+        "price_brl": 79.33800000000001
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 290.8,
+        "sale_price": 290.8,
+        "discount_percent": 0,
+        "msrp_brl": 93.05600000000001,
+        "price_brl": 93.05600000000001
       }
     ]
   },
@@ -17514,6 +18279,24 @@
         "discount_percent": 72,
         "msrp_brl": 40.542,
         "price_brl": 11.542
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 8.81,
+        "sale_price": 2.79,
+        "discount_percent": 32,
+        "msrp_brl": 37.002,
+        "price_brl": 11.718
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 135.0,
+        "sale_price": 42.99,
+        "discount_percent": 32,
+        "msrp_brl": 43.2,
+        "price_brl": 13.7568
       }
     ]
   },
@@ -17530,6 +18313,24 @@
         "discount_percent": 0,
         "msrp_brl": 57.942,
         "price_brl": 57.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 25.99,
+        "sale_price": 25.99,
+        "discount_percent": 0,
+        "msrp_brl": 109.158,
+        "price_brl": 109.158
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 349.0,
+        "sale_price": 349.0,
+        "discount_percent": 0,
+        "msrp_brl": 111.68,
+        "price_brl": 111.68
       }
     ]
   },
@@ -17546,6 +18347,24 @@
         "discount_percent": 60,
         "msrp_brl": 28.942,
         "price_brl": 11.542
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 5.99,
+        "sale_price": 5.99,
+        "discount_percent": 0,
+        "msrp_brl": 25.158,
+        "price_brl": 25.158
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 99.9,
+        "sale_price": 99.9,
+        "discount_percent": 0,
+        "msrp_brl": 31.968000000000004,
+        "price_brl": 31.968000000000004
       }
     ]
   },
@@ -17562,6 +18381,24 @@
         "discount_percent": 0,
         "msrp_brl": 17.342000000000002,
         "price_brl": 17.342000000000002
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 10.99,
+        "sale_price": 10.99,
+        "discount_percent": 0,
+        "msrp_brl": 46.158,
+        "price_brl": 46.158
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 149.0,
+        "sale_price": 149.0,
+        "discount_percent": 0,
+        "msrp_brl": 47.68,
+        "price_brl": 47.68
       }
     ]
   },
@@ -17578,6 +18415,24 @@
         "discount_percent": 0,
         "msrp_brl": 28.942,
         "price_brl": 28.942
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 4.99,
+        "sale_price": 4.99,
+        "discount_percent": 0,
+        "msrp_brl": 20.958000000000002,
+        "price_brl": 20.958000000000002
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 88.0,
+        "sale_price": 88.0,
+        "discount_percent": 0,
+        "msrp_brl": 28.16,
+        "price_brl": 28.16
       }
     ]
   },
@@ -17603,6 +18458,24 @@
         "discount_percent": 0,
         "msrp_brl": 20.27,
         "price_brl": 20.27
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 29.99,
+        "sale_price": 29.99,
+        "discount_percent": 0,
+        "msrp_brl": 125.958,
+        "price_brl": 125.958
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 379.0,
+        "sale_price": 379.0,
+        "discount_percent": 0,
+        "msrp_brl": 121.28,
+        "price_brl": 121.28
       }
     ]
   },
@@ -17619,6 +18492,24 @@
         "discount_percent": 0,
         "msrp_brl": 84.042,
         "price_brl": 84.042
+      },
+      {
+        "region": "CA",
+        "currency": "CAD",
+        "msrp": 18.99,
+        "sale_price": 18.99,
+        "discount_percent": 0,
+        "msrp_brl": 79.758,
+        "price_brl": 79.758
+      },
+      {
+        "region": "MX",
+        "currency": "MXN",
+        "msrp": 285.0,
+        "sale_price": 285.0,
+        "discount_percent": 0,
+        "msrp_brl": 91.2,
+        "price_brl": 91.2
       }
     ]
   },
