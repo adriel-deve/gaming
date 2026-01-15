@@ -479,12 +479,8 @@
 
     .highlight-track {
       display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(180px, 1fr);
-      gap: 12px;
-      overflow-x: auto;
-      padding-bottom: 6px;
-      scroll-snap-type: x proximity;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
     .highlight-card {
@@ -494,8 +490,6 @@
       padding: 12px;
       display: grid;
       gap: 8px;
-      min-width: 220px;
-      scroll-snap-align: start;
       text-decoration: none;
       color: inherit;
       transition: all 0.3s ease;
@@ -749,7 +743,7 @@
           </div>
           <div class="highlight-track">
             <a href="jogo-detalhes.html?id=mario-rabbids-sparks-of-hope" class="highlight-card">
-              <div class="cover cover-a"><span>MARIO + RABBIDS</span></div>
+              <div class="cover"><span>MARIO + RABBIDS</span></div>
               <div class="item-details">
                 <div class="item-title">Mario + Rabbids Sparks of Hope</div>
                 <div class="item-meta">eShop US</div>
@@ -760,7 +754,7 @@
               </div>
             </a>
             <a href="jogo-detalhes.html?id=overcooked-2" class="highlight-card">
-              <div class="cover cover-b"><span>OVERCOOKED! 2</span></div>
+              <div class="cover"><span>OVERCOOKED! 2</span></div>
               <div class="item-details">
                 <div class="item-title">Overcooked! 2</div>
                 <div class="item-meta">eShop US</div>
@@ -771,7 +765,7 @@
               </div>
             </a>
             <a href="jogo-detalhes.html?id=dead-cells" class="highlight-card">
-              <div class="cover cover-c"><span>DEAD CELLS</span></div>
+              <div class="cover"><span>DEAD CELLS</span></div>
               <div class="item-details">
                 <div class="item-title">Dead Cells</div>
                 <div class="item-meta">eShop US</div>
@@ -782,7 +776,7 @@
               </div>
             </a>
             <a href="jogo-detalhes.html?id=it-takes-two" class="highlight-card">
-              <div class="cover cover-d"><span>IT TAKES TWO</span></div>
+              <div class="cover"><span>IT TAKES TWO</span></div>
               <div class="item-details">
                 <div class="item-title">It Takes Two</div>
                 <div class="item-meta">eShop US</div>
@@ -793,7 +787,7 @@
               </div>
             </a>
             <a href="jogo-detalhes.html?id=sonic-frontiers" class="highlight-card">
-              <div class="cover cover-e"><span>SONIC FRONTIERS</span></div>
+              <div class="cover"><span>SONIC FRONTIERS</span></div>
               <div class="item-details">
                 <div class="item-title">Sonic Frontiers</div>
                 <div class="item-meta">eShop US</div>
@@ -801,17 +795,6 @@
               <div class="item-price-row">
                 <div class="item-price">R$ 86,97</div>
                 <div class="item-discount">-75%</div>
-              </div>
-            </a>
-            <a href="jogo-detalhes.html?id=terraria" class="highlight-card">
-              <div class="cover cover-f"><span>TERRARIA</span></div>
-              <div class="item-details">
-                <div class="item-title">Terraria</div>
-                <div class="item-meta">eShop US</div>
-              </div>
-              <div class="item-price-row">
-                <div class="item-price">R$ 52,18</div>
-                <div class="item-discount">-70%</div>
               </div>
             </a>
           </div>
