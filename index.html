@@ -4,9 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eshop Pulse | Comparador global de jogos</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Fontes do sistema para carregamento rápido -->
   <style>
     :root {
       --bg: #0a0a0f;
@@ -31,35 +29,12 @@
     }
 
     body {
-      font-family: "Sora", system-ui, sans-serif;
-      background: radial-gradient(circle at top left, rgba(255, 59, 59, 0.22), transparent 55%),
-        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.08), transparent 45%),
-        #0a0a0f;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0a0a0f;
       color: var(--text);
       min-height: 100vh;
       line-height: 1.5;
       overflow-x: hidden;
-    }
-
-    .bg-pattern {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(120deg, rgba(255, 255, 255, 0.04), transparent 30%),
-        repeating-linear-gradient(160deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 140px);
-      z-index: -1;
-      opacity: 0.7;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
     }
 
     .container {
@@ -71,9 +46,8 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      backdrop-filter: blur(16px);
-      background: rgba(10, 10, 15, 0.78);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: #0a0a0f;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .topbar-inner {
@@ -94,14 +68,14 @@
     .brand-mark {
       width: 42px;
       height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(140deg, var(--accent), #ffffff);
-      display: grid;
-      place-items: center;
-      color: #111;
+      border-radius: 8px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
       font-weight: 700;
       letter-spacing: 1px;
-      box-shadow: var(--shadow);
     }
 
     .brand-name {
@@ -111,15 +85,14 @@
 
     .brand-tag {
       font-size: 0.7rem;
-      letter-spacing: 2px;
       text-transform: uppercase;
+      letter-spacing: 1px;
       color: var(--muted);
     }
 
     .nav {
       display: flex;
       gap: 18px;
-      color: var(--muted);
       font-size: 0.95rem;
     }
 
@@ -127,6 +100,12 @@
       position: relative;
       padding-bottom: 6px;
       transition: color 0.2s ease;
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .nav a.active {
+      color: var(--text);
     }
 
     .nav a::after {
@@ -140,12 +119,6 @@
       transition: width 0.2s ease;
     }
 
-    .nav a:hover,
-    .nav a.active {
-      color: var(--text);
-    }
-
-    .nav a:hover::after,
     .nav a.active::after {
       width: 100%;
     }
@@ -204,7 +177,7 @@
     }
 
     h1 {
-      font-family: "Bebas Neue", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: clamp(2.8rem, 5vw, 4.4rem);
       line-height: 1;
       letter-spacing: 1px;
@@ -212,7 +185,7 @@
     }
 
     h2 {
-      font-family: "Bebas Neue", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       letter-spacing: 1px;
     }
 
@@ -659,8 +632,6 @@
   </style>
 </head>
 <body>
-  <div class="bg-pattern"></div>
-
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">
