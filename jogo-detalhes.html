@@ -31,24 +31,11 @@
     }
 
     body {
-      font-family: "Sora", system-ui, sans-serif;
-      background: radial-gradient(circle at top left, rgba(255, 59, 59, 0.22), transparent 55%),
-        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.08), transparent 45%),
-        #0a0a0f;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0a0a0f;
       color: var(--text);
       min-height: 100vh;
       line-height: 1.5;
-    }
-
-    .bg-pattern {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(120deg, rgba(255, 255, 255, 0.04), transparent 30%),
-        repeating-linear-gradient(160deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 140px);
-      z-index: -1;
-      opacity: 0.7;
     }
 
     .container {
@@ -86,14 +73,13 @@
     .brand-mark {
       width: 42px;
       height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(140deg, var(--accent), #ffffff);
-      display: grid;
-      place-items: center;
-      color: #111;
+      border-radius: 8px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
       font-weight: 700;
-      letter-spacing: 1px;
-      box-shadow: var(--shadow);
     }
 
     .brand-name {
@@ -176,9 +162,8 @@
       width: 100%;
       aspect-ratio: 3/4;
       border-radius: var(--radius-lg);
-      background: linear-gradient(160deg, #ff3b3b, #1a1a1f);
+      background: #1a1a2e;
       overflow: hidden;
-      box-shadow: var(--shadow);
       border: 2px solid var(--border);
     }
 
@@ -213,7 +198,7 @@
     }
 
     .best-price-card {
-      background: linear-gradient(135deg, rgba(255, 59, 59, 0.15), rgba(255, 255, 255, 0.05));
+      background: var(--panel);
       border: 2px solid var(--accent);
       border-radius: var(--radius-md);
       padding: 24px;
