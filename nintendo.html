@@ -232,6 +232,23 @@
           </select>
         </label>
       </div>
+      <div class="filter-row" style="margin-top: 12px;">
+        <label class="filter-pill">
+          <span>Regiao:</span>
+          <select id="filterRegion">
+            <option value="BR">Brasil (BRL)</option>
+            <option value="US">EUA (USD)</option>
+            <option value="CA">Canada (CAD)</option>
+            <option value="MX">Mexico (MXN)</option>
+          </select>
+        </label>
+        <label class="filter-pill">
+          <span>Preco ate:</span>
+          <select id="filterPrice">
+            <option value="all">Qualquer</option>
+          </select>
+        </label>
+      </div>
     </div>
 
     <div class="stats-grid">
@@ -6809,6 +6826,61 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Configuracao de faixas de preco por moeda/regiao
+    const priceRanges = {
+      BR: { // Real Brasileiro
+        symbol: 'R$',
+        ranges: [20, 50, 100, 150, 200, 300, 400, 500, 600, 700, 800]
+      },
+      US: { // Dolar Americano
+        symbol: '$',
+        ranges: [5, 10, 20, 30, 40, 50, 60, 80, 100, 150]
+      },
+      CA: { // Dolar Canadense
+        symbol: 'C$',
+        ranges: [10, 20, 30, 50, 70, 100, 130, 160, 200]
+      },
+      MX: { // Peso Mexicano
+        symbol: 'MX$',
+        ranges: [100, 200, 400, 600, 800, 1000, 1500, 2000, 2500]
+      }
+    };
+
+    // Atualiza as opcoes de preco quando a regiao muda
+    function updatePriceOptions() {
+      const region = document.getElementById('filterRegion').value;
+      const priceSelect = document.getElementById('filterPrice');
+      const config = priceRanges[region];
+
+      // Salva valor atual se possivel
+      const currentValue = priceSelect.value;
+
+      // Limpa opcoes
+      priceSelect.innerHTML = '<option value="all">Qualquer</option>';
+
+      // Adiciona faixas de preco da regiao
+      config.ranges.forEach(price => {
+        const option = document.createElement('option');
+        option.value = price;
+        option.textContent = `Ate ${config.symbol} ${price.toLocaleString('pt-BR')}`;
+        priceSelect.appendChild(option);
+      });
+
+      // Tenta restaurar valor anterior se existir na nova lista
+      if (config.ranges.includes(parseInt(currentValue))) {
+        priceSelect.value = currentValue;
+      }
+    }
+
+    // Obtem o preco do jogo na regiao selecionada
+    function getGamePriceInRegion(game, region) {
+      if (game.prices && game.prices[region]) {
+        // Retorna preco de venda se disponivel, senao MSRP
+        return game.prices[region].sale || game.prices[region].msrp || null;
+      }
+      return null;
+    }
+
     // Lista de jogos populares/mais vendidos (baseado em popularidade real)
     const popularGames = [
       'zelda', 'mario', 'pokemon', 'animal crossing', 'splatoon', 'kirby', 'metroid',
@@ -6897,6 +6969,8 @@
       const filterType = document.getElementById('filterType').value;
       const sortBy = document.getElementById('sortBy').value;
       const filterLetter = document.getElementById('filterLetter').value;
+      const filterRegion = document.getElementById('filterRegion').value;
+      const filterPrice = document.getElementById('filterPrice').value;
 
       filteredGames = allGames.filter(g => {
         // Filtro de busca por nome
@@ -6914,6 +6988,18 @@
           } else {
             if (firstChar !== filterLetter) return false;
           }
+        }
+
+        // Filtro por preco na regiao selecionada
+        if (filterPrice !== 'all') {
+          const maxPrice = parseFloat(filterPrice);
+          const gamePrice = getGamePriceInRegion(g, filterRegion);
+
+          // Se o jogo nao tem preco na regiao, nao mostra
+          if (gamePrice === null) return false;
+
+          // Se o preco e maior que o maximo, nao mostra
+          if (gamePrice > maxPrice) return false;
         }
 
         return true;
@@ -6947,6 +7033,14 @@
     document.getElementById('filterType').addEventListener('change', applyFilters);
     document.getElementById('sortBy').addEventListener('change', applyFilters);
     document.getElementById('filterLetter').addEventListener('change', applyFilters);
+    document.getElementById('filterRegion').addEventListener('change', () => {
+      updatePriceOptions();
+      applyFilters();
+    });
+    document.getElementById('filterPrice').addEventListener('change', applyFilters);
+
+    // Inicializa opcoes de preco
+    updatePriceOptions();
 
     loadGames();
   </script>
