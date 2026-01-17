@@ -70,6 +70,14 @@
       background: transparent; border: none; color: var(--text); outline: none;
     }
     .filter-pill input { width: 180px; }
+    .filter-pill select { cursor: pointer; }
+    .filter-pill select option { background: #1a1a2e; color: var(--text); }
+    .search-pill { flex: 1; min-width: 200px; }
+    @media (max-width: 768px) {
+      .filter-row { flex-direction: column; }
+      .filter-pill { width: 100%; }
+      .search-pill { min-width: auto; }
+    }
 
     /* Stats */
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
@@ -166,7 +174,7 @@
 
     <div class="filters">
       <div class="filter-row">
-        <label class="filter-pill">
+        <label class="filter-pill search-pill">
           <span>Buscar:</span>
           <input type="text" id="searchInput" placeholder="Nome do jogo..." />
         </label>
@@ -181,10 +189,46 @@
         <label class="filter-pill">
           <span>Ordenar:</span>
           <select id="sortBy">
+            <option value="relevantes">Relevantes</option>
+            <option value="destaques">Destaques</option>
             <option value="discount">Maior desconto</option>
             <option value="price-low">Menor preco</option>
             <option value="price-high">Maior preco</option>
-            <option value="title">Titulo (A-Z)</option>
+            <option value="title-az">Titulo (A-Z)</option>
+            <option value="title-za">Titulo (Z-A)</option>
+          </select>
+        </label>
+        <label class="filter-pill">
+          <span>Letra:</span>
+          <select id="filterLetter">
+            <option value="all">Todas</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="J">J</option>
+            <option value="K">K</option>
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="N">N</option>
+            <option value="O">O</option>
+            <option value="P">P</option>
+            <option value="Q">Q</option>
+            <option value="R">R</option>
+            <option value="S">S</option>
+            <option value="T">T</option>
+            <option value="U">U</option>
+            <option value="V">V</option>
+            <option value="W">W</option>
+            <option value="X">X</option>
+            <option value="Y">Y</option>
+            <option value="Z">Z</option>
+            <option value="0-9">0-9</option>
           </select>
         </label>
       </div>
@@ -6765,23 +6809,132 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Lista de jogos populares/mais vendidos (baseado em popularidade real)
+    const popularGames = [
+      'zelda', 'mario', 'pokemon', 'animal crossing', 'splatoon', 'kirby', 'metroid',
+      'fire emblem', 'smash bros', 'xenoblade', 'bayonetta', 'pikmin', 'luigi',
+      'donkey kong', 'yoshi', 'breath of the wild', 'tears of the kingdom',
+      'odyssey', 'kart', 'party', 'sonic', 'minecraft', 'fortnite', 'roblox',
+      'among us', 'stardew valley', 'hollow knight', 'celeste', 'hades', 'dead cells',
+      'cuphead', 'shovel knight', 'undertale', 'terraria', 'overcooked', 'it takes two',
+      'portal', 'witcher', 'skyrim', 'dark souls', 'elden ring', 'resident evil',
+      'monster hunter', 'dragon quest', 'final fantasy', 'persona', 'octopath',
+      'triangle strategy', 'bravely', 'ni no kuni', 'tales of', 'diablo',
+      'civilization', 'cities skylines', 'two point', 'fifa', 'nba', 'madden',
+      'just dance', 'ring fit', 'lego', 'crash bandicoot', 'spyro', 'rayman',
+      'ori', 'limbo', 'inside', 'little nightmares', 'spiritfarer', 'gris'
+    ];
+
+    // Funcao para calcular score de popularidade
+    function getPopularityScore(game) {
+      const title = game.t.toLowerCase();
+      let score = 0;
+
+      // Bonus para jogos populares
+      for (const keyword of popularGames) {
+        if (title.includes(keyword)) {
+          score += 1000;
+          break;
+        }
+      }
+
+      // Bonus para jogos com mais regioes (mais disponiveis = mais popular)
+      score += game.n * 50;
+
+      // Bonus para jogos com preco mais alto (AAA games)
+      if (game.prices && game.prices.BR) {
+        const msrp = game.prices.BR.msrp || 0;
+        if (msrp >= 250) score += 200;
+        else if (msrp >= 150) score += 100;
+        else if (msrp >= 80) score += 50;
+      }
+
+      return score;
+    }
+
+    // Funcao para calcular score de destaque (promocoes populares)
+    function getHighlightScore(game) {
+      let score = 0;
+
+      // Maior desconto = mais destaque
+      score += game.d * 10;
+
+      // Bonus para jogos populares em promocao
+      const title = game.t.toLowerCase();
+      for (const keyword of popularGames) {
+        if (title.includes(keyword)) {
+          score += 500;
+          break;
+        }
+      }
+
+      // Bonus para jogos com bom preco final
+      if (game.p <= 50) score += 100;
+      if (game.p <= 20) score += 200;
+
+      return score;
+    }
+
+    // Funcao para ordenacao alfabetica (numeros no final)
+    function alphabeticSort(a, b, ascending = true) {
+      const titleA = a.t.toUpperCase();
+      const titleB = b.t.toUpperCase();
+
+      const startsWithNumberA = /^[0-9]/.test(titleA);
+      const startsWithNumberB = /^[0-9]/.test(titleB);
+
+      // Numeros vao para o final
+      if (startsWithNumberA && !startsWithNumberB) return ascending ? 1 : -1;
+      if (!startsWithNumberA && startsWithNumberB) return ascending ? -1 : 1;
+
+      // Ambos sao numeros ou ambos sao letras
+      const result = titleA.localeCompare(titleB, 'pt-BR', { sensitivity: 'base' });
+      return ascending ? result : -result;
+    }
+
     function applyFilters() {
       const search = document.getElementById('searchInput').value.toLowerCase();
       const filterType = document.getElementById('filterType').value;
       const sortBy = document.getElementById('sortBy').value;
+      const filterLetter = document.getElementById('filterLetter').value;
 
       filteredGames = allGames.filter(g => {
+        // Filtro de busca por nome
         if (search && !g.t.toLowerCase().includes(search)) return false;
+
+        // Filtro por tipo
         if (filterType === 'sale' && g.d === 0) return false;
         if (filterType === '4regions' && g.n < 4) return false;
+
+        // Filtro por letra
+        if (filterLetter !== 'all') {
+          const firstChar = g.t.charAt(0).toUpperCase();
+          if (filterLetter === '0-9') {
+            if (!/^[0-9]/.test(g.t)) return false;
+          } else {
+            if (firstChar !== filterLetter) return false;
+          }
+        }
+
         return true;
       });
 
+      // Ordenacao
       filteredGames.sort((a, b) => {
+        if (sortBy === 'relevantes') {
+          return getPopularityScore(b) - getPopularityScore(a);
+        }
+        if (sortBy === 'destaques') {
+          // Apenas jogos em promocao nos destaques
+          if (a.d === 0 && b.d > 0) return 1;
+          if (a.d > 0 && b.d === 0) return -1;
+          return getHighlightScore(b) - getHighlightScore(a);
+        }
         if (sortBy === 'discount') return b.d - a.d || a.p - b.p;
         if (sortBy === 'price-low') return a.p - b.p;
         if (sortBy === 'price-high') return b.p - a.p;
-        if (sortBy === 'title') return a.t.localeCompare(b.t);
+        if (sortBy === 'title-az') return alphabeticSort(a, b, true);
+        if (sortBy === 'title-za') return alphabeticSort(a, b, false);
         return 0;
       });
 
@@ -6793,6 +6946,7 @@
     document.getElementById('searchInput').addEventListener('input', applyFilters);
     document.getElementById('filterType').addEventListener('change', applyFilters);
     document.getElementById('sortBy').addEventListener('change', applyFilters);
+    document.getElementById('filterLetter').addEventListener('change', applyFilters);
 
     loadGames();
   </script>
