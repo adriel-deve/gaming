@@ -65,11 +65,20 @@ jobs:
         python update_sales_dekudeals.py
         echo "✅ Sales applied!"
 
-    - name: Step 4 - Update frontend data (4 regions)
+    - name: Step 4 - Fix BR prices with verified data
       working-directory: ./backend
       run: |
         echo "=========================================="
-        echo "STEP 4: Updating frontend data"
+        echo "STEP 4: Fixing BR prices with verified data"
+        echo "=========================================="
+        python fix_br_prices_verified.py
+        echo "✅ BR prices verified!"
+
+    - name: Step 5 - Update frontend data (4 regions)
+      working-directory: ./backend
+      run: |
+        echo "=========================================="
+        echo "STEP 5: Updating frontend data"
         echo "=========================================="
         python update_all_games_4regions.py
         echo "✅ Frontend data updated!"
