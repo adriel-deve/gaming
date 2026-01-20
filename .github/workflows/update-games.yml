@@ -1,24 +1,17 @@
 name: Update Nintendo Games Data
 
 on:
-  # Executar a cada 6 horas
+  # Executar uma vez por dia às 06:00 UTC (03:00 BRT)
   schedule:
-    - cron: '0 */6 * * *'  # A cada 6 horas (00:00, 06:00, 12:00, 18:00 UTC)
+    - cron: '0 6 * * *'
 
   # Permitir execução manual
   workflow_dispatch:
 
-  # Executar quando houver push na main (para testes)
-  push:
-    branches: [ main ]
-    paths:
-      - 'backend/nintendo_scraper.js'
-      - 'backend/update_all_pages.py'
-      - '.github/workflows/update-games.yml'
-
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
     - name: Checkout repository
@@ -34,24 +27,52 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.13'
+
+    - name: Install Python dependencies
+      run: |
+        pip install requests
 
     - name: Install Node dependencies
       working-directory: ./backend
       run: |
         npm install
 
-    - name: Run Nintendo Scraper
+    - name: Step 1 - Fetch Brazil prices from Nintendo API
       working-directory: ./backend
       run: |
-        node nintendo_scraper.js
-        echo "Scraper executado com sucesso!"
+        echo "=========================================="
+        echo "STEP 1: Fetching BR prices from Nintendo API"
+        echo "=========================================="
+        node scraper_27_countries.js
+        echo "✅ BR prices fetched!"
 
-    - name: Update HTML pages
+    - name: Step 2 - Fill missing BR prices (estimate from US)
       working-directory: ./backend
       run: |
-        python update_all_pages.py
-        echo "Páginas atualizadas com sucesso!"
+        echo "=========================================="
+        echo "STEP 2: Filling missing BR prices"
+        echo "=========================================="
+        python fill_all_br_prices.py
+        echo "✅ All BR prices filled!"
+
+    - name: Step 3 - Apply verified sales from DekuDeals
+      working-directory: ./backend
+      run: |
+        echo "=========================================="
+        echo "STEP 3: Applying verified sales"
+        echo "=========================================="
+        python update_sales_dekudeals.py
+        echo "✅ Sales applied!"
+
+    - name: Step 4 - Update frontend data (4 regions)
+      working-directory: ./backend
+      run: |
+        echo "=========================================="
+        echo "STEP 4: Updating frontend data"
+        echo "=========================================="
+        python update_all_games_4regions.py
+        echo "✅ Frontend data updated!"
 
     - name: Check for changes
       id: check_changes
@@ -64,11 +85,14 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add -A
-        git commit -m "auto: Update Nintendo games data ($(date +'%Y-%m-%d %H:%M UTC'))"
+        git commit -m "auto: Update Nintendo prices ($(date +'%Y-%m-%d %H:%M UTC'))"
         git push
 
     - name: Summary
       run: |
-        echo "✅ Pipeline executado com sucesso!"
-        echo "📊 Dados atualizados às: $(date)"
-        echo "🎮 Próxima atualização em: 6 horas"
+        echo "=========================================="
+        echo "✅ DAILY UPDATE COMPLETE!"
+        echo "=========================================="
+        echo "📊 Data updated at: $(date)"
+        echo "🎮 Next update: Tomorrow at 06:00 UTC"
+        echo "=========================================="
