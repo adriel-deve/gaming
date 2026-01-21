@@ -29,10 +29,11 @@ def to_js_object(game):
             "discount": price['discount']
         }
 
-    # Compact format: t=title, s=slug, d=discount, p=price_brl, r=region, n=num_regions
+    # Compact format: t=title, s=slug, d=discount, p=price_brl, r=region, n=num_regions, i=image
     obj = {
         "t": game['title'],
         "s": game.get('slug', ''),
+        "i": game.get('image', ''),
         "d": game.get('max_discount', 0),
         "p": round(game.get('cheapest_price_brl', 0), 2),
         "r": game.get('cheapest_region', 'BR'),

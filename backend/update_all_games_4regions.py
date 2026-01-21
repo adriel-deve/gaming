@@ -52,6 +52,7 @@ for game in games:
         'title': game['title'],
         'slug': game.get('slug', ''),
         'nsuid': game.get('nsuid', ''),
+        'image': game.get('image', ''),
         'cheapest_region': cheapest_region,
         'cheapest_price_brl': cheapest_price['price_brl'],
         'max_discount': max_discount,
