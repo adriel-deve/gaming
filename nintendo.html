@@ -6737,14 +6737,14 @@
     }
 
     const regionFlags = {
-      'BR': '\u{1F1E7}\u{1F1F7}', 'US': '\u{1F1FA}\u{1F1F8}', 'CA': '\u{1F1E8}\u{1F1E6}', 'MX': '\u{1F1F2}\u{1F1FD}',
-      'AR': '\u{1F1E6}\u{1F1F7}', 'CL': '\u{1F1E8}\u{1F1F1}', 'CO': '\u{1F1E8}\u{1F1F4}', 'PE': '\u{1F1F5}\u{1F1EA}',
-      'GB': '\u{1F1EC}\u{1F1E7}', 'DE': '\u{1F1E9}\u{1F1EA}', 'FR': '\u{1F1EB}\u{1F1F7}', 'ES': '\u{1F1EA}\u{1F1F8}',
-      'IT': '\u{1F1EE}\u{1F1F9}', 'PT': '\u{1F1F5}\u{1F1F9}', 'AU': '\u{1F1E6}\u{1F1FA}', 'ZA': '\u{1F1FF}\u{1F1E6}'
+      'BR': '🇧🇷', 'US': '🇺🇸', 'CA': '🇨🇦', 'MX': '🇲🇽',
+      'AR': '🇦🇷', 'CL': '🇨🇱', 'CO': '🇨🇴', 'PE': '🇵🇪',
+      'GB': '🇬🇧', 'DE': '🇩🇪', 'FR': '🇫🇷', 'ES': '🇪🇸',
+      'IT': '🇮🇹', 'PT': '🇵🇹', 'AU': '🇦🇺', 'ZA': '🇿🇦'
     };
 
     function getFlag(region) {
-      return regionFlags[region] || region;
+      return regionFlags[region] || '🌍';
     }
 
     function loadGames() {

@@ -79,6 +79,7 @@ for game in games:
         'title': game['title'],
         'slug': game.get('slug', ''),
         'nsuid': game.get('nsuid', ''),
+        'image': game.get('image', ''),
         'prices': prices
     })
 

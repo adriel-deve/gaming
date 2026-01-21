@@ -669,6 +669,14 @@
       document.getElementById('bestPrice').textContent = `R$ ${bestPrice.priceInBRL.toFixed(2)}`;
       document.getElementById('bestCountry').textContent = `${bestPrice.country.flag} ${bestPrice.country.name}`;
 
+      // Exibir imagem do jogo
+      const gameCover = document.getElementById('gameCover');
+      if (game.image) {
+        gameCover.innerHTML = `<img src="${game.image}" alt="${game.title}" onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);text-align:center;padding:20px;\\'>${game.title}</div>'">`;
+      } else {
+        gameCover.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);text-align:center;padding:20px;">${game.title}</div>`;
+      }
+
       if (savings > 0) {
         document.getElementById('bestDiscount').textContent = `Economia de R$ ${savings.toFixed(2)}`;
       } else {
