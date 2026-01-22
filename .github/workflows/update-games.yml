@@ -31,7 +31,7 @@ jobs:
 
     - name: Install Python dependencies
       run: |
-        pip install requests
+        pip install requests psycopg2-binary python-dotenv
 
     - name: Install Node dependencies
       working-directory: ./backend
@@ -82,6 +82,17 @@ jobs:
         echo "=========================================="
         python update_all_games_4regions.py
         echo "✅ Frontend data updated!"
+
+    - name: Step 6 - Save price history to Neon (for charts)
+      working-directory: ./backend/db
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      run: |
+        echo "=========================================="
+        echo "STEP 6: Saving price history to Neon"
+        echo "=========================================="
+        python save_daily_prices.py
+        echo "✅ Price history saved!"
 
     - name: Check for changes
       id: check_changes
