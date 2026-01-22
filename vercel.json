@@ -3,14 +3,17 @@
   "name": "gaming-eshop-pulse",
   "builds": [
     {
-      "src": "api/*.py",
+      "src": "api/games.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/api/games/(.*)",
       "dest": "/api/games.py"
+    },
+    {
+      "handle": "filesystem"
     }
   ]
 }
