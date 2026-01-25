@@ -1,19 +1,10 @@
 {
   "version": 2,
   "name": "gaming-eshop-pulse",
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/games.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/games/(.*)",
-      "dest": "/api/games.py"
-    },
-    {
-      "handle": "filesystem"
+      "source": "/api/games/:path*",
+      "destination": "/api/games.py"
     }
   ]
 }
