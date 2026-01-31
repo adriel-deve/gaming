@@ -87,12 +87,13 @@
     .game-card:hover { border-color: var(--accent); transform: translateY(-2px); }
 
     .game-cover {
-      width: 100%; height: 140px; background: #1a1a2e;
+      width: 100%; height: 180px; background: #1a1a2e;
       border-radius: 8px; margin-bottom: 12px;
       overflow: hidden; position: relative;
+      display: flex; align-items: center; justify-content: center;
     }
     .game-cover-img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%; height: 100%; object-fit: contain;
     }
     .game-cover-fallback {
       width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
